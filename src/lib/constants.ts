@@ -32,9 +32,9 @@ export const CORE_VALUES = [
   {
     title: "Giảm lãng phí nông nghiệp",
     description:
-      "Tận dụng phụ phẩm từ vườn trái cây, góp phần kinh tế tuần hoàn cho nông dân ĐBSCL.",
+      "Tận dụng phụ phẩm từ vườn trái cây, góp phần kinh tế tuần hoàn cho nông dân địa phương.",
     icon: "cycle",
-    stat: "ĐBSCL",
+    stat: "Bản địa",
     statLabel: "Nguồn gốc",
   },
 ] as const;

@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: `${BRAND.name} — ${BRAND.tagline}`,
   description: BRAND.description,
-  keywords: ["giấy handmade", "giấy cỏ tự nhiên", "eco paper", "Mộc Xinh", "ĐBSCL", "handmade paper Vietnam"],
+  keywords: ["giấy handmade", "giấy cỏ tự nhiên", "eco paper", "Mộc Xinh", "giấy cỏ", "handmade paper Vietnam"],
   openGraph: {
     title: `${BRAND.name} — ${BRAND.tagline}`,
     description: BRAND.description,

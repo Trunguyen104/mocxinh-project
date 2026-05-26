@@ -63,22 +63,6 @@ export function Footer() {
               Sống xanh bắt đầu từ những lựa chọn nhỏ — một tờ giấy, một lời nhắn, một hành trình tái sinh cùng thiên nhiên.
             </p>
 
-            {/* Product thumbnails */}
-            <div className="mt-6 flex gap-3">
-              {[
-                "/images/1dc34e6f-b9e5-491c-9886-13b2bfe18361.jpg",
-                "/images/9e89018c-4900-43eb-870d-0c698709652a.jpg",
-                "/images/265ea7cd-b798-4d72-9c43-868db04c46ed.jpg",
-              ].map((src, i) => (
-                <div key={i} className="relative h-12 w-12 overflow-hidden rounded-xl opacity-60 transition-opacity hover:opacity-100">
-                  <Image src={src} alt="Sản phẩm Mộc Xinh" fill className="object-cover" sizes="48px" />
-                </div>
-              ))}
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-ivory/10 text-xs text-ivory/40">
-                +2
-              </div>
-            </div>
-
             {/* Social icons */}
             <div className="mt-6 flex gap-3">
               {SOCIAL.map((s) => (

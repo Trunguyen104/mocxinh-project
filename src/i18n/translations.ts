@@ -15,10 +15,10 @@ export const translations = {
     nav_contact_mobile: "Liên hệ ngay",
 
     // ── Hero ───────────────────────────────────────────────────────────────────
-    hero_badge: "Đồng bằng sông Cửu Long",
+    hero_badge: "Giấy cỏ tự nhiên",
     hero_tagline: "Tái sinh từ thiên nhiên",
     hero_description:
-      "Giấy thủ công từ cỏ dại và sợi tự nhiên — hành trình từ đồng cỏ Đồng bằng sông Cửu Long đến tờ giấy mang hồn thiên nhiên.",
+      "Giấy thủ công từ cỏ dại và sợi tự nhiên — hành trình biến những điều mộc mạc của thiên nhiên thành từng tờ giấy thân thiện và gần gũi.",
     hero_cta_primary: "Khám phá câu chuyện",
     hero_cta_secondary: "Xem sản phẩm",
     hero_scroll: "Cuộn",
@@ -36,13 +36,13 @@ export const translations = {
     story_quote: "\"Mỗi tờ giấy là một câu chuyện từ thiên nhiên\"",
     story_eco_title: "Kinh tế tuần hoàn",
     story_eco_desc:
-      "Cỏ dại từ 100+ nhà vườn ĐBSCL được thu gom và tái sinh, giảm thiểu chất thải nông nghiệp.",
+      "Cỏ dại từ các nhà vườn địa phương được thu gom và tái sinh, giảm thiểu chất thải nông nghiệp.",
     story_texture_label: "Texture thực tế — chụp trực tiếp sản phẩm",
 
     // ── Story steps ────────────────────────────────────────────────────────────
     step1_title: "Thu hoạch cỏ",
     step1_desc:
-      "Cỏ dại được thu gom từ các vườn trái cây ở Đồng bằng sông Cửu Long — biến phế phẩm thành tài nguyên.",
+      "Cỏ dại được thu gom từ các vườn trái cây địa phương — biến phế phẩm thành tài nguyên.",
     step2_title: "Xử lý sợi",
     step2_desc:
       "Cỏ được ngâm, xử lý thủ công để tách sợi tự nhiên, không sử dụng hóa chất công nghiệp.",
@@ -51,7 +51,7 @@ export const translations = {
       "Từng tờ giấy được đổ khuôn thủ công — mỗi tờ mang vân độc đáo như dấu tay của người nghệ nhân.",
     step4_title: "Phơi & hoàn thiện",
     step4_desc:
-      "Giấy được phơi tự nhiên dưới nắng ĐBSCL, tạo nên màu sắc tự nhiên và texture độc đáo.",
+      "Giấy được phơi dưới ánh nắng tự nhiên, tạo nên màu sắc tự nhiên và texture độc đáo.",
 
     // ── Gallery ────────────────────────────────────────────────────────────────
     gallery_badge: "Hình ảnh thực tế",
@@ -103,8 +103,8 @@ export const translations = {
     value2_stat_label: "Thủ công",
     value3_title: "Giảm lãng phí nông nghiệp",
     value3_desc:
-      "Tận dụng nguồn cỏ dại từ vườn trái cây ĐBSCL, góp phần kinh tế tuần hoàn và tạo thêm thu nhập cho nông dân địa phương.",
-    value3_stat: "ĐBSCL",
+      "Tận dụng nguồn cỏ dại từ vườn trái cây địa phương, góp phần kinh tế tuần hoàn và tạo thêm thu nhập cho nông dân địa phương.",
+    value3_stat: "Bản địa",
     value3_stat_label: "Nguồn gốc",
 
     testimonial1_text:
@@ -154,10 +154,10 @@ export const translations = {
     nav_contact_mobile: "Get in Touch",
 
     // ── Hero ───────────────────────────────────────────────────────────────────
-    hero_badge: "Mekong Delta, Vietnam",
+    hero_badge: "Natural Grass Paper",
     hero_tagline: "Reborn from Nature",
     hero_description:
-      "Handcrafted paper from wild grass and natural fibers — a journey from the Mekong Delta meadows to paper that carries the soul of nature.",
+      "Handcrafted paper from wild grass and natural fibers — a journey transforming the rustic elements of nature into friendly and familiar sheets of paper.",
     hero_cta_primary: "Explore Our Story",
     hero_cta_secondary: "View Products",
     hero_scroll: "Scroll",
@@ -175,13 +175,13 @@ export const translations = {
     story_quote: "\"Every sheet of paper is a story from nature\"",
     story_eco_title: "Circular Economy",
     story_eco_desc:
-      "Wild grass from 100+ Mekong Delta gardens is collected and reborn, minimizing agricultural waste.",
+      "Wild grass from local gardens is collected and reborn, minimizing agricultural waste.",
     story_texture_label: "Real textures — photographed directly from products",
 
     // ── Story steps ────────────────────────────────────────────────────────────
     step1_title: "Grass Harvesting",
     step1_desc:
-      "Wild grass is collected from fruit orchards in the Mekong Delta — turning agricultural waste into a valuable resource.",
+      "Wild grass is collected from local fruit orchards — turning agricultural waste into a valuable resource.",
     step2_title: "Fiber Processing",
     step2_desc:
       "Grass is soaked and manually processed to extract natural fibers, without industrial chemicals.",
@@ -190,7 +190,7 @@ export const translations = {
       "Each sheet is hand-poured into molds — every page carries a unique texture like the fingerprint of an artisan.",
     step4_title: "Drying & Finishing",
     step4_desc:
-      "Paper is naturally sun-dried under the Mekong Delta sun, creating its unique natural color and texture.",
+      "Paper is naturally sun-dried under the sun, creating its unique natural color and texture.",
 
     // ── Gallery ────────────────────────────────────────────────────────────────
     gallery_badge: "Real Product Photos",
@@ -242,8 +242,8 @@ export const translations = {
     value2_stat_label: "Handmade",
     value3_title: "Reducing Agricultural Waste",
     value3_desc:
-      "Utilizing wild grass from Mekong Delta orchards, contributing to a circular economy and additional income for local farmers.",
-    value3_stat: "Mekong",
+      "Utilizing wild grass from local orchards, contributing to a circular economy and additional income for local farmers.",
+    value3_stat: "Local",
     value3_stat_label: "Delta Origin",
 
     testimonial1_text:

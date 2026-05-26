@@ -11,7 +11,7 @@ export const STORY_SCENES: StorySceneConfig[] = [
     end: 0.2,
     title: "Đồng cỏ dại",
     subtitle:
-      "Cỏ dại len lỏi giữa các hàng cây ăn trái — vấn đề quen thuộc của nông dân ĐBSCL.",
+      "Cỏ dại len lỏi giữa các hàng cây ăn trái — thách thức quen thuộc của những người nông dân.",
   },
   {
     id: "grass-bundles",

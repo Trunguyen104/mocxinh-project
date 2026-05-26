@@ -140,7 +140,6 @@ export function HeroSection() {
             {[
               { value: "100%", label: t("hero_stat_natural") },
               { value: "Eco", label: t("hero_stat_eco") },
-              { value: "ĐBSCL", label: t("hero_stat_origin") },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="font-display text-2xl font-medium text-moc-green dark:text-moc-green-light">{stat.value}</p>
@@ -177,7 +176,7 @@ export function HeroSection() {
           {/* Floating mini image */}
           <div className="absolute -right-4 top-12 hidden overflow-hidden rounded-2xl shadow-card ring-4 ring-cream animate-float-slow dark:ring-[var(--background)] lg:block">
             <Image
-              src="/images/9e89018c-4900-43eb-870d-0c698709652a.jpg"
+              src=""
               alt="Cỏ tự nhiên nguyên liệu"
               width={140}
               height={170}
