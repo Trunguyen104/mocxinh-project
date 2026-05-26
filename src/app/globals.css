@@ -1,0 +1,523 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT MODE (default)
+═══════════════════════════════════════════════════════════════ */
+:root {
+  --ivory: #f7f3ec;
+  --ivory-warm: #f0ead8;
+  --beige: #e8dcc8;
+  --beige-light: #f2ede2;
+  --kraft: #8b6f47;
+  --kraft-dark: #4a3520;
+  --kraft-mid: #6b5030;
+  --olive: #6b7c5c;
+  --olive-dark: #3d4d30;
+  --olive-light: #9aab8a;
+  --sage: #b8c9a8;
+  --sage-light: #d4e2c8;
+  --cream: #faf7f0;
+  --brown-warm: #7a5c3a;
+
+  /* ── Mộc Xinh Brand Green ── */
+  --moc-green: #3a8a3a;
+  --moc-green-dark: #2a6a2a;
+  --moc-green-light: #5cb85c;
+  --moc-green-pale: #e8f5e8;
+  --moc-green-mid: #4a9e4a;
+
+  --background: var(--cream);
+  --foreground: var(--kraft-dark);
+  --card-bg: rgba(250, 247, 240, 0.8);
+  --card-border: rgba(139, 111, 71, 0.12);
+  --surface: var(--ivory);
+  --surface-raised: var(--beige-light);
+  --muted: rgba(61, 77, 48, 0.6);
+  --subtle: rgba(61, 77, 48, 0.35);
+
+  --shadow-soft: 0 4px 24px rgb(74 53 32 / 8%);
+  --shadow-paper: 0 20px 60px rgb(74 53 32 / 14%);
+  --shadow-card: 0 8px 32px rgb(74 53 32 / 10%);
+  --shadow-glow-olive: 0 0 40px rgb(107 124 92 / 20%);
+  --shadow-glow-kraft: 0 0 40px rgb(139 111 71 / 20%);
+  --shadow-glow-green: 0 0 40px rgb(58 138 58 / 30%);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK MODE — .dark class on <html>
+═══════════════════════════════════════════════════════════════ */
+.dark {
+  --ivory: #1e1a15;
+  --ivory-warm: #181410;
+  --beige: #2c261e;
+  --beige-light: #231e17;
+  --kraft: #c4965a;
+  --kraft-dark: #e8d5b0;
+  --kraft-mid: #b88040;
+  --olive: #8aab78;
+  --olive-dark: #a8c295;
+  --olive-light: #6b9060;
+  --sage: #4a6040;
+  --sage-light: #3a5032;
+  --cream: #110e0a;
+  --brown-warm: #c4965a;
+
+  /* ── Mộc Xinh Brand Green (dark mode — brighter) ── */
+  --moc-green: #4caf50;
+  --moc-green-dark: #388e3c;
+  --moc-green-light: #76d275;
+  --moc-green-pale: #1b2e1b;
+  --moc-green-mid: #5cc55c;
+
+  --background: #110e0a;
+  --foreground: #e8d5b0;
+  --card-bg: rgba(30, 26, 21, 0.85);
+  --card-border: rgba(200, 160, 80, 0.10);
+  --surface: #1a1610;
+  --surface-raised: #241e16;
+  --muted: rgba(168, 194, 149, 0.6);
+  --subtle: rgba(168, 194, 149, 0.3);
+
+  --shadow-soft: 0 4px 24px rgb(0 0 0 / 30%);
+  --shadow-paper: 0 20px 60px rgb(0 0 0 / 40%);
+  --shadow-card: 0 8px 32px rgb(0 0 0 / 35%);
+  --shadow-glow-olive: 0 0 60px rgb(138 171 120 / 15%);
+  --shadow-glow-kraft: 0 0 60px rgb(196 150 90 / 15%);
+  --shadow-glow-green: 0 0 60px rgb(76 175 80 / 25%);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TAILWIND THEME TOKENS
+═══════════════════════════════════════════════════════════════ */
+@theme inline {
+  --color-ivory: var(--ivory);
+  --color-ivory-warm: var(--ivory-warm);
+  --color-beige: var(--beige);
+  --color-beige-light: var(--beige-light);
+  --color-kraft: var(--kraft);
+  --color-kraft-dark: var(--kraft-dark);
+  --color-kraft-mid: var(--kraft-mid);
+  --color-olive: var(--olive);
+  --color-olive-dark: var(--olive-dark);
+  --color-olive-light: var(--olive-light);
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
+  --color-cream: var(--cream);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* Mộc Xinh brand green tokens */
+  --color-moc-green: var(--moc-green);
+  --color-moc-green-dark: var(--moc-green-dark);
+  --color-moc-green-light: var(--moc-green-light);
+  --color-moc-green-pale: var(--moc-green-pale);
+  --color-moc-green-mid: var(--moc-green-mid);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-paper: var(--shadow-paper);
+  --shadow-card: var(--shadow-card);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GRADIENT TEXT
+═══════════════════════════════════════════════════════════════ */
+.gradient-text {
+  background: linear-gradient(135deg, var(--moc-green-dark) 0%, var(--moc-green) 50%, var(--olive) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, var(--moc-green-light) 0%, var(--moc-green) 50%, var(--olive) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(135deg, var(--kraft) 0%, var(--kraft-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-green {
+  background: linear-gradient(135deg, var(--moc-green-dark) 0%, var(--moc-green) 60%, var(--moc-green-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gradient-text-green {
+  background: linear-gradient(135deg, var(--moc-green) 0%, var(--moc-green-light) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOW EFFECTS
+═══════════════════════════════════════════════════════════════ */
+.glow-olive {
+  box-shadow: var(--shadow-glow-olive);
+}
+
+.glow-kraft {
+  box-shadow: var(--shadow-glow-kraft);
+}
+
+.glow-green {
+  box-shadow: var(--shadow-glow-green);
+}
+
+.glow-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+.glow-pulse-green {
+  animation: glow-pulse-green 2.5s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TEXTURE BACKGROUNDS
+═══════════════════════════════════════════════════════════════ */
+.paper-texture {
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgb(139 111 71 / 5%) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgb(107 124 92 / 6%) 0%, transparent 45%),
+    repeating-linear-gradient(
+      93deg,
+      transparent,
+      transparent 2px,
+      rgb(92 74 50 / 2%) 2px,
+      rgb(92 74 50 / 2%) 3px
+    );
+}
+
+.dark .paper-texture {
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgb(139 111 71 / 3%) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgb(107 124 92 / 4%) 0%, transparent 45%),
+    repeating-linear-gradient(
+      93deg,
+      transparent,
+      transparent 2px,
+      rgb(255 255 255 / 1%) 2px,
+      rgb(255 255 255 / 1%) 3px
+    );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLASSMORPHISM
+═══════════════════════════════════════════════════════════════ */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid var(--card-border);
+  box-shadow:
+    0 8px 32px rgba(0 0 0 / 0.06),
+    inset 0 1px 0 rgba(255 255 255 / 0.2);
+}
+
+.dark .glass-card {
+  background: rgba(26, 22, 16, 0.7);
+  border: 1px solid rgba(200, 160, 80, 0.08);
+  box-shadow:
+    0 8px 32px rgba(0 0 0 / 0.4),
+    inset 0 1px 0 rgba(255 255 255 / 0.04);
+}
+
+.glass-nav {
+  background: rgba(250, 247, 240, 0.85);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  border-bottom: 1px solid rgba(139, 111, 71, 0.1);
+}
+
+.dark .glass-nav {
+  background: rgba(17, 14, 10, 0.9);
+  border-bottom: 1px solid rgba(200, 160, 80, 0.08);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GRADIENT BACKGROUNDS
+═══════════════════════════════════════════════════════════════ */
+.bg-mesh-light {
+  background:
+    radial-gradient(ellipse at 0% 0%, hsl(80 25% 90% / 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, hsl(35 40% 88% / 0.5) 0%, transparent 50%),
+    hsl(40 30% 97%);
+}
+
+.dark .bg-mesh-light {
+  background:
+    radial-gradient(ellipse at 0% 0%, hsl(80 25% 8% / 0.8) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, hsl(35 40% 6% / 0.7) 0%, transparent 50%),
+    hsl(30 20% 7%);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════════════════════ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-8px); opacity: 1; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(1deg); }
+  66% { transform: translateY(-6px) rotate(-1deg); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes leaf-drift {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.7; }
+  100% { transform: translateX(-80px) translateY(60px) rotate(25deg); opacity: 0; }
+}
+
+@keyframes badge-pop {
+  0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
+  80% { transform: scale(1.05) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgb(107 124 92 / 20%); }
+  50% { box-shadow: 0 0 40px rgb(107 124 92 / 40%), 0 0 80px rgb(107 124 92 / 15%); }
+}
+
+@keyframes glow-pulse-green {
+  0%, 100% { box-shadow: 0 0 20px rgb(58 138 58 / 25%); }
+  50% { box-shadow: 0 0 50px rgb(58 138 58 / 50%), 0 0 90px rgb(58 138 58 / 20%); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes theme-flip {
+  0% { transform: rotate(0) scale(1); opacity: 1; }
+  50% { transform: rotate(90deg) scale(0); opacity: 0; }
+  100% { transform: rotate(0) scale(1); opacity: 1; }
+}
+
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.9s ease both; }
+.animate-fade-in { animation: fade-in 0.6s ease both; }
+.animate-badge-pop { animation: badge-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.animate-scale-in { animation: scale-in 0.6s ease both; }
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(255 255 255 / 0.3) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LEAF PARTICLE
+═══════════════════════════════════════════════════════════════ */
+.leaf-particle {
+  position: absolute;
+  width: 3px;
+  height: 16px;
+  background: linear-gradient(135deg, var(--olive), var(--olive-light));
+  border-radius: 50% 50% 50% 0;
+  animation: leaf-drift linear infinite;
+  opacity: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GRADIENT MASKS
+═══════════════════════════════════════════════════════════════ */
+.mask-fade-b {
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.mask-fade-t {
+  -webkit-mask-image: linear-gradient(to top, black 60%, transparent 100%);
+  mask-image: linear-gradient(to top, black 60%, transparent 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ivory); }
+::-webkit-scrollbar-thumb { background: var(--beige); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--kraft); }
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME TOGGLE BUTTON
+═══════════════════════════════════════════════════════════════ */
+.theme-toggle-icon {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+.theme-toggle-icon.entering {
+  transform: rotate(90deg) scale(0);
+  opacity: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   IMAGE HOVER
+═══════════════════════════════════════════════════════════════ */
+.img-hover-zoom { overflow: hidden; }
+.img-hover-zoom img {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.img-hover-zoom:hover img { transform: scale(1.06); }
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION DIVIDER
+═══════════════════════════════════════════════════════════════ */
+.divider-leaf {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.divider-leaf::before, .divider-leaf::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgb(107 124 92 / 25%), transparent);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GRADIENT BORDER
+═══════════════════════════════════════════════════════════════ */
+.gradient-border {
+  position: relative;
+  background: var(--background);
+  border-radius: 1.5rem;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--kraft), var(--olive), var(--sage));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CARD TRANSITIONS (for dark mode switching)
+═══════════════════════════════════════════════════════════════ */
+* {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Override for elements that should have their own transition */
+a, button, [role="button"],
+.animate-float, .animate-float-slow,
+.animate-badge-pop, .animate-spin-slow {
+  transition-property: color, background-color, border-color, box-shadow,
+    transform, opacity, filter;
+  transition-duration: 0.3s;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FORM INPUTS
+═══════════════════════════════════════════════════════════════ */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--card-border);
+  background: var(--surface);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+
+.input-field::placeholder {
+  color: var(--subtle);
+}
+
+.input-field:focus {
+  border-color: var(--olive);
+  box-shadow: 0 0 0 3px rgba(107, 124, 92, 0.12);
+}
+
+.dark .input-field {
+  background: var(--surface);
+  border-color: rgba(200, 160, 80, 0.12);
+}
+
+.dark .input-field:focus {
+  border-color: var(--olive);
+  box-shadow: 0 0 0 3px rgba(138, 171, 120, 0.12);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   REDUCE MOTION
+═══════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

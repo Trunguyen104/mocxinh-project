@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mộc Xinh — Frontend
 
-## Getting Started
+Boilerplate Next.js + React Three Fiber + GSAP ScrollTrigger cho trang landing thương hiệu giấy thủ công Mộc Xinh.
 
-First, run the development server:
+## Chạy dự án
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mở [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js 16** (App Router)
+- **Tailwind CSS v4** — palette kraft / olive / ivory / beige
+- **React Three Fiber** + **Drei** — canvas 3D scroll-driven
+- **GSAP ScrollTrigger** — pin section & scrub `progress` 0→1
 
-## Learn More
+## Cấu trúc thư mục
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                    # layout, page, globals
+├── config/
+│   └── scrollStoryConfig.ts   # 5 cảnh, ngưỡng progress, copy
+├── hooks/
+│   └── useScrollStoryProgress.ts
+├── components/
+│   ├── layout/             # Header, Footer
+│   ├── sections/           # Hero, Story, Products, Values
+│   ├── three/
+│   │   ├── StoryCanvas.tsx
+│   │   ├── StoryExperience.tsx
+│   │   ├── scenes/         # 5 scene placeholder (thay bằng GLB)
+│   │   └── materials/
+│   └── ui/
+├── lib/constants.ts
+└── types/story.ts
+public/models/              # Đặt file .glb/.gltf tại đây
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scroll 3D — cách hoạt động
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. `StorySection` tạo container cao `500vh` (`STORY_SCROLL_HEIGHT_VH`).
+2. `useScrollStoryProgress` pin layer canvas và cập nhật `progress` (0–1).
+3. `StoryExperience` dùng `getSceneWeight()` để crossfade 5 cảnh procedural.
+4. Cảnh cuối (`progress > 0.82`): tờ giấy xoay nhẹ theo con trỏ.
 
-## Deploy on Vercel
+## Thay model placeholder bằng GLB
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```tsx
+import { useGLTF } from "@react-three/drei";
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+useGLTF.preload("/models/grass-field.glb");
+
+function GrassFieldScene({ weight }: { weight: number }) {
+  const { scene } = useGLTF("/models/grass-field.glb");
+  // morph / visibility theo weight
+}
+```
+
+Điều chỉnh timeline trong `src/config/scrollStoryConfig.ts`.
+
+## Brand colors (Tailwind)
+
+| Token        | Màu     |
+|-------------|---------|
+| `ivory`     | #f5f0e6 |
+| `beige`     | #e8dcc8 |
+| `kraft`     | #8b6f47 |
+| `kraft-dark`| #5c4a32 |
+| `olive`     | #6b7c5c |
