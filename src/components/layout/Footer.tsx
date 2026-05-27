@@ -1,16 +1,7 @@
-import Image from "next/image";
+"use client";
+
+import { useApp } from "@/contexts/AppContext";
 import { BRAND, CONTACT } from "@/lib/constants";
-
-// NOTE: Footer is a Server Component — no useApp() here.
-// Nav links in Footer use hardcoded text since they don't need to be translated
-// (links are permanent). For translated footer, convert to "use client" and use useApp().
-
-const NAV_LINKS = [
-  { href: "#story", labelVI: "Câu chuyện", labelEN: "Our Story" },
-  { href: "#products", labelVI: "Sản phẩm", labelEN: "Products" },
-  { href: "#values", labelVI: "Giá trị bền vững", labelEN: "Our Values" },
-  { href: "#contact", labelVI: "Liên hệ", labelEN: "Contact" },
-];
 
 const SOCIAL = [
   {
@@ -45,25 +36,31 @@ const SOCIAL = [
 ] as const;
 
 export function Footer() {
+  const { t } = useApp();
+
+  const navLinks = [
+    { href: "#story", label: t("nav_story") },
+    { href: "#products", label: t("nav_products") },
+    { href: "#values", label: t("nav_values") },
+    { href: "#contact", label: t("nav_contact") },
+  ];
+
   return (
     <footer className="relative overflow-hidden border-t border-olive/10 bg-kraft-dark text-ivory/90 dark:border-kraft/6">
-      {/* Decorative blobs */}
       <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-olive/5 blur-[60px]" aria-hidden />
       <div className="pointer-events-none absolute -right-10 bottom-10 h-48 w-48 rounded-full bg-kraft/10 blur-[40px]" aria-hidden />
 
       <div className="relative mx-auto max-w-6xl px-6 py-16 lg:px-10">
         <div className="grid gap-12 md:grid-cols-4">
-          {/* Brand column */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-olive/20 text-base">🌿</span>
               <p className="font-display text-2xl text-ivory">{BRAND.name}</p>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ivory/60">
-              Sống xanh bắt đầu từ những lựa chọn nhỏ — một tờ giấy, một lời nhắn, một hành trình tái sinh cùng thiên nhiên.
+              {t("footer_tagline")}
             </p>
 
-            {/* Social icons */}
             <div className="mt-6 flex gap-3">
               {SOCIAL.map((s) => (
                 <a
@@ -79,10 +76,9 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Contact column */}
           <div>
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.25em] text-olive-light">
-              Liên hệ
+              {t("footer_contact_title")}
             </p>
             <address className="space-y-3 not-italic text-sm text-ivory/65">
               <p className="flex items-start gap-2">
@@ -108,20 +104,19 @@ export function Footer() {
             </address>
           </div>
 
-          {/* Navigation column */}
           <div>
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.25em] text-olive-light">
-              Điều hướng
+              {t("footer_nav_title")}
             </p>
             <ul className="space-y-3 text-sm">
-              {NAV_LINKS.map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     className="group flex items-center gap-2 text-ivory/65 transition-colors hover:text-ivory"
                   >
                     <span className="h-px w-0 bg-olive-light transition-all duration-300 group-hover:w-4" />
-                    {link.labelVI}
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -129,12 +124,11 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="mt-14 flex flex-col gap-3 border-t border-ivory/8 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-ivory/35">
-            © {new Date().getFullYear()} {BRAND.name}. Giấy thủ công — Tái sinh từ thiên nhiên.
+            © {new Date().getFullYear()} {BRAND.name}. {t("footer_copyright")}
           </p>
-          <p className="text-xs text-ivory/25">Made with 🌿 tại Cần Thơ, Việt Nam</p>
+          <p className="text-xs text-ivory/25">{t("footer_made")}</p>
         </div>
       </div>
     </footer>

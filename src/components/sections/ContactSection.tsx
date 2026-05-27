@@ -272,7 +272,7 @@ export function ContactSection() {
                 {["Facebook", "Instagram", "Zalo"].map((s) => (
                   <a
                     key={s}
-                    href="#"
+                    href={s === "Facebook" ? "https://www.facebook.com/cogiaymocxinh" : s === "Instagram" ? "https://www.instagram.com/cogiaymocxinh" : "https://zalo.me/0909090909"}
                     id={`footer-social-${s.toLowerCase()}`}
                     className="flex items-center gap-1.5 rounded-full border border-ivory/20 px-4 py-2 text-xs font-medium text-ivory/75 transition-all duration-300 hover:border-ivory/40 hover:bg-ivory/10 hover:text-ivory"
                   >
