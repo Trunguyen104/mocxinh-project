@@ -11,10 +11,7 @@ interface FinishedPaperSceneProps {
   interactive?: boolean;
 }
 
-export function FinishedPaperScene({
-  weight,
-  interactive = false,
-}: FinishedPaperSceneProps) {
+export function FinishedPaperScene({ weight, interactive = false }: FinishedPaperSceneProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const material = useMemo(() => createPaperMaterial(), []);
   const { pointer } = useThree();

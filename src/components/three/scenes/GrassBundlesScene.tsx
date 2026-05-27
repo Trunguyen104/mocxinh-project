@@ -23,8 +23,7 @@ export function GrassBundlesScene({ weight }: GrassBundlesSceneProps) {
 
   useFrame((state) => {
     if (!groupRef.current) return;
-    groupRef.current.rotation.y =
-      Math.sin(state.clock.elapsedTime * 0.3) * 0.05 * weight;
+    groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.3) * 0.05 * weight;
   });
 
   if (weight <= 0.001) return null;

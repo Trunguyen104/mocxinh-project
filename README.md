@@ -11,6 +11,36 @@ npm run dev
 
 Mở [http://localhost:3000](http://localhost:3000).
 
+Yêu cầu **Node.js 20+** (xem `.nvmrc`).
+
+## Chất lượng code (ESLint, Prettier, Husky)
+
+| Lệnh                   | Mô tả                           |
+| ---------------------- | ------------------------------- |
+| `npm run lint`         | Kiểm tra ESLint                 |
+| `npm run lint:fix`     | ESLint tự sửa                   |
+| `npm run format`       | Format toàn repo (Prettier)     |
+| `npm run format:check` | Kiểm tra format (dùng trong CI) |
+| `npm run typecheck`    | `tsc --noEmit`                  |
+
+**Husky** chạy `lint-staged` trước mỗi commit (ESLint + Prettier trên file staged).
+
+Sau `npm install`, hook được kích hoạt qua script `prepare`. Nếu cần cài lại hook:
+
+```bash
+npm run prepare
+```
+
+## CI (GitHub Actions)
+
+Workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml) chạy khi push/PR lên `main`, `master`, `develop`:
+
+1. `npm ci`
+2. `npm run lint`
+3. `npm run format:check`
+4. `npm run typecheck`
+5. `npm run build`
+
 ## Tech stack
 
 - **Next.js 16** (App Router)
@@ -50,9 +80,9 @@ src/
 ## Brand colors (Tailwind)
 
 | Token        | Màu     |
-|-------------|---------|
-| `ivory`     | #f5f0e6 |
-| `beige`     | #e8dcc8 |
-| `kraft`     | #8b6f47 |
-| `kraft-dark`| #5c4a32 |
-| `olive`     | #6b7c5c |
+| ------------ | ------- |
+| `ivory`      | #f5f0e6 |
+| `beige`      | #e8dcc8 |
+| `kraft`      | #8b6f47 |
+| `kraft-dark` | #5c4a32 |
+| `olive`      | #6b7c5c |

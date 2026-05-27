@@ -4,6 +4,7 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { createGrassMaterial } from "@/components/three/materials/createPaperMaterial";
+import { seededUnit } from "@/lib/seededRandom";
 
 interface GrassFieldSceneProps {
   weight: number;
@@ -17,12 +18,8 @@ export function GrassFieldScene({ weight }: GrassFieldSceneProps) {
     const items: { position: [number, number, number]; scale: number }[] = [];
     for (let i = 0; i < 120; i++) {
       items.push({
-        position: [
-          (Math.random() - 0.5) * 8,
-          0,
-          (Math.random() - 0.5) * 6,
-        ],
-        scale: 0.4 + Math.random() * 0.8,
+        position: [(seededUnit(i, 1) - 0.5) * 8, 0, (seededUnit(i, 2) - 0.5) * 6],
+        scale: 0.4 + seededUnit(i, 3) * 0.8,
       });
     }
     return items;

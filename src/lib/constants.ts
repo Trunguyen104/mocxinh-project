@@ -23,8 +23,7 @@ export const CORE_VALUES = [
   },
   {
     title: "Nghệ thuật thủ công",
-    description:
-      "Mỗi tờ giấy là kết tinh của đôi tay nghệ nhân — không hai tờ giống nhau.",
+    description: "Mỗi tờ giấy là kết tinh của đôi tay nghệ nhân — không hai tờ giống nhau.",
     icon: "hand",
     stat: "100%",
     statLabel: "Thủ công",

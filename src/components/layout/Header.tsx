@@ -8,9 +8,8 @@ import { LangToggle } from "@/components/ui/LangToggle";
 import { BRAND } from "@/lib/constants";
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { t, isDark } = useApp();
+  const { t } = useApp();
 
   const NAV_LINKS = [
     { href: "#story", label: t("nav_story") },
@@ -19,16 +18,11 @@ export function Header() {
     { href: "#contact", label: t("nav_contact") },
   ];
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   // Close mobile menu on resize
   useEffect(() => {
-    const onResize = () => { if (window.innerWidth >= 768) setMobileOpen(false); };
+    const onResize = () => {
+      if (window.innerWidth >= 768) setMobileOpen(false);
+    };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -40,11 +34,7 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 lg:px-10">
         {/* ── Logo ───────────────────────────────────────────────────────── */}
         <div className="flex flex-1 justify-start">
-          <a
-            href="#"
-            className="group flex items-center gap-2"
-            aria-label="Mộc Xinh - Trang chủ"
-          >
+          <a href="#" className="group flex items-center gap-2" aria-label="Mộc Xinh - Trang chủ">
             <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-moc-green/20 transition-all duration-500 group-hover:ring-moc-green/50 group-hover:glow-green">
               <Image
                 src="/images/mocxinh-logo.jpg"
@@ -62,7 +52,10 @@ export function Header() {
         </div>
 
         {/* ── Desktop nav ─────────────────────────────────────────────────── */}
-        <nav className="hidden items-center justify-center gap-7 md:flex" aria-label="Điều hướng chính">
+        <nav
+          className="hidden items-center justify-center gap-7 md:flex"
+          aria-label="Điều hướng chính"
+        >
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -98,16 +91,19 @@ export function Header() {
             aria-label={mobileOpen ? "Đóng menu" : "Mở menu"}
           >
             <span
-              className={`block h-px w-6 bg-kraft-dark transition-all duration-300 dark:bg-kraft-dark ${mobileOpen ? "translate-y-2.5 rotate-45" : ""
-                }`}
+              className={`block h-px w-6 bg-kraft-dark transition-all duration-300 dark:bg-kraft-dark ${
+                mobileOpen ? "translate-y-2.5 rotate-45" : ""
+              }`}
             />
             <span
-              className={`block h-px w-6 bg-kraft-dark transition-all duration-300 dark:bg-kraft-dark ${mobileOpen ? "opacity-0" : ""
-                }`}
+              className={`block h-px w-6 bg-kraft-dark transition-all duration-300 dark:bg-kraft-dark ${
+                mobileOpen ? "opacity-0" : ""
+              }`}
             />
             <span
-              className={`block h-px w-6 bg-kraft-dark transition-all duration-300 dark:bg-kraft-dark ${mobileOpen ? "-translate-y-2.5 -rotate-45" : ""
-                }`}
+              className={`block h-px w-6 bg-kraft-dark transition-all duration-300 dark:bg-kraft-dark ${
+                mobileOpen ? "-translate-y-2.5 -rotate-45" : ""
+              }`}
             />
           </button>
         </div>
@@ -116,8 +112,9 @@ export function Header() {
       {/* ── Mobile menu ─────────────────────────────────────────────────────── */}
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-t border-kraft/10 bg-cream/96 backdrop-blur-xl transition-all duration-500 dark:border-kraft/8 dark:bg-stone-950/95 md:hidden ${mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-          }`}
+        className={`overflow-hidden border-t border-kraft/10 bg-cream/96 backdrop-blur-xl transition-all duration-500 dark:border-kraft/8 dark:bg-stone-950/95 md:hidden ${
+          mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        }`}
       >
         <nav className="flex flex-col gap-1 px-6 py-4" aria-label="Điều hướng di động">
           {NAV_LINKS.map((link) => (

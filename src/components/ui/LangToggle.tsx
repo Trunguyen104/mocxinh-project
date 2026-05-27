@@ -1,7 +1,6 @@
 "use client";
 
 import { useApp } from "@/contexts/AppContext";
-import type { Lang } from "@/i18n/translations";
 
 export function LangToggle() {
   const { lang, setLang } = useApp();

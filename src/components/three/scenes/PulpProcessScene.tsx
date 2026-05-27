@@ -33,22 +33,13 @@ export function PulpProcessScene({ weight }: PulpProcessSceneProps) {
       <Float speed={2} floatIntensity={0.4 * weight}>
         <mesh position={[0, 0.35, 0]}>
           <sphereGeometry args={[0.55, 32, 32]} />
-          <MeshDistortMaterial
-            color="#c4b896"
-            roughness={0.95}
-            distort={0.35}
-            speed={2}
-          />
+          <MeshDistortMaterial color="#c4b896" roughness={0.95} distort={0.35} speed={2} />
         </mesh>
       </Float>
       {Array.from({ length: 24 }).map((_, i) => (
         <mesh
           key={i}
-          position={[
-            Math.cos(i * 0.8) * 0.9,
-            0.15 + (i % 3) * 0.08,
-            Math.sin(i * 0.8) * 0.9,
-          ]}
+          position={[Math.cos(i * 0.8) * 0.9, 0.15 + (i % 3) * 0.08, Math.sin(i * 0.8) * 0.9]}
         >
           <sphereGeometry args={[0.04, 8, 8]} />
           <meshStandardMaterial color="#8a9a6e" roughness={1} />

@@ -43,8 +43,7 @@ export const STORY_SCENES: StorySceneConfig[] = [
     start: 0.8,
     end: 1,
     title: "Tờ giấy Mộc Xinh",
-    subtitle:
-      "Bề mặt nhám chân thực — xoay nhẹ chuột để cảm nhận texture thủ công.",
+    subtitle: "Bề mặt nhám chân thực — xoay nhẹ chuột để cảm nhận texture thủ công.",
   },
 ];
 
@@ -57,10 +56,7 @@ export function getActiveScene(progress: number): StorySceneConfig {
 }
 
 /** Độ hiển thị 0–1 của từng cảnh 3D (crossfade mềm giữa các phase) */
-export function getSceneWeight(
-  progress: number,
-  sceneId: StorySceneId,
-): number {
+export function getSceneWeight(progress: number, sceneId: StorySceneId): number {
   const scene = STORY_SCENES.find((s) => s.id === sceneId);
   if (!scene) return 0;
 

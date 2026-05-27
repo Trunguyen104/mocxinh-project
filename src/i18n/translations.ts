@@ -33,7 +33,7 @@ export const translations = {
     story_title_2: "đến tờ giấy nghệ thuật",
     story_subtitle:
       "Mộc Xinh ra đời từ câu hỏi giản dị: điều gì sẽ xảy ra nếu cỏ dại — thứ người ta thường loại bỏ — được trao một cuộc sống mới?",
-    story_quote: "\"Mỗi tờ giấy là một câu chuyện từ thiên nhiên\"",
+    story_quote: '"Mỗi tờ giấy là một câu chuyện từ thiên nhiên"',
     story_eco_title: "Kinh tế tuần hoàn",
     story_eco_desc:
       "Cỏ dại từ các nhà vườn địa phương được thu gom và tái sinh, giảm thiểu chất thải nông nghiệp.",
@@ -87,8 +87,7 @@ export const translations = {
     values_subtitle:
       "Chúng tôi không chỉ bán giấy — chúng tôi lan tỏa một cách sống xanh, gắn kết con người với thiên nhiên qua từng sản phẩm.",
     values_cta_banner_title: "Bắt đầu hành trình xanh cùng Mộc Xinh",
-    values_cta_banner_desc:
-      "Một tờ giấy từ cỏ — một lựa chọn nhỏ vì môi trường lớn hơn.",
+    values_cta_banner_desc: "Một tờ giấy từ cỏ — một lựa chọn nhỏ vì môi trường lớn hơn.",
     values_cta: "Liên hệ & Đặt hàng",
 
     value1_title: "Thân thiện môi trường",
@@ -172,7 +171,7 @@ export const translations = {
     story_title_2: "to artistic paper",
     story_subtitle:
       "Mộc Xinh was born from a simple question: what if wild grass — something people usually discard — could be given a new life?",
-    story_quote: "\"Every sheet of paper is a story from nature\"",
+    story_quote: '"Every sheet of paper is a story from nature"',
     story_eco_title: "Circular Economy",
     story_eco_desc:
       "Wild grass from local gardens is collected and reborn, minimizing agricultural waste.",
@@ -226,8 +225,7 @@ export const translations = {
     values_subtitle:
       "We don't just sell paper — we spread a green lifestyle, connecting people with nature through every product.",
     values_cta_banner_title: "Start your green journey with Mộc Xinh",
-    values_cta_banner_desc:
-      "A sheet of grass paper — a small choice for a bigger environment.",
+    values_cta_banner_desc: "A sheet of grass paper — a small choice for a bigger environment.",
     values_cta: "Contact & Order",
 
     value1_title: "Eco-Friendly",

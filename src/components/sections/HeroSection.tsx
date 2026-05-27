@@ -30,24 +30,53 @@ export function HeroSection() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from([titleRef.current, subtitleRef.current, ctaRef.current], {
-        y: 40, opacity: 0, duration: 1.2, stagger: 0.18, ease: "power3.out", delay: 0.3,
+        y: 40,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.18,
+        ease: "power3.out",
+        delay: 0.3,
       });
       if (imageRef.current) {
-        gsap.from(imageRef.current, { x: 60, opacity: 0, duration: 1.4, ease: "power3.out", delay: 0.5 });
+        gsap.from(imageRef.current, {
+          x: 60,
+          opacity: 0,
+          duration: 1.4,
+          ease: "power3.out",
+          delay: 0.5,
+        });
       }
       if (badgeRef.current) {
-        gsap.from(badgeRef.current, { scale: 0.5, opacity: 0, duration: 0.8, ease: "back.out(2)", delay: 1.2 });
+        gsap.from(badgeRef.current, {
+          scale: 0.5,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(2)",
+          delay: 1.2,
+        });
       }
       if (sectionRef.current && decorRef.current) {
         gsap.to(decorRef.current, {
-          yPercent: 30, ease: "none",
-          scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: true },
+          yPercent: 30,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
         });
       }
       if (imageRef.current) {
         gsap.to(imageRef.current, {
-          y: -50, ease: "none",
-          scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: true },
+          y: -50,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
         });
       }
     }, sectionRef);
@@ -129,7 +158,13 @@ export function HeroSection() {
               className="flex items-center gap-2 text-sm font-medium text-olive-dark/80 underline-offset-4 transition-colors duration-300 hover:text-kraft-dark hover:underline dark:text-olive-dark/80 dark:hover:text-kraft-dark"
             >
               {t("hero_cta_secondary")}
-              <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg
+                className="h-4 w-4"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
                 <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
@@ -142,8 +177,12 @@ export function HeroSection() {
               { value: "Eco", label: t("hero_stat_eco") },
             ].map((stat) => (
               <div key={stat.label}>
-                <p className="font-display text-2xl font-medium text-moc-green dark:text-moc-green-light">{stat.value}</p>
-                <p className="mt-0.5 text-xs uppercase tracking-wider text-olive/70 dark:text-olive/60">{stat.label}</p>
+                <p className="font-display text-2xl font-medium text-moc-green dark:text-moc-green-light">
+                  {stat.value}
+                </p>
+                <p className="mt-0.5 text-xs uppercase tracking-wider text-olive/70 dark:text-olive/60">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
@@ -169,7 +208,9 @@ export function HeroSection() {
             className="absolute -bottom-5 -left-6 flex h-20 w-20 flex-col items-center justify-center rounded-full border-4 border-cream bg-moc-green text-center shadow-paper animate-badge-pop glow-pulse-green dark:border-[var(--background)]"
           >
             <span className="text-xl leading-none">🌿</span>
-            <span className="mt-0.5 text-[9px] font-bold uppercase tracking-wider text-white/90">100%</span>
+            <span className="mt-0.5 text-[9px] font-bold uppercase tracking-wider text-white/90">
+              100%
+            </span>
             <span className="text-[8px] uppercase tracking-wider text-white/70">Eco</span>
           </div>
 

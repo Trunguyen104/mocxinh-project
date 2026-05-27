@@ -11,7 +11,8 @@ const variants = {
     "bg-moc-green text-white hover:bg-moc-green-dark shadow-soft hover:shadow-paper glow-green hover:glow-pulse-green dark:bg-moc-green dark:hover:bg-moc-green-dark",
   outline:
     "border border-moc-green/40 text-moc-green-dark hover:bg-moc-green-pale hover:border-moc-green/70 dark:border-moc-green/30 dark:text-moc-green-light dark:hover:bg-moc-green-pale",
-  ghost: "text-moc-green-dark hover:bg-moc-green-pale dark:text-moc-green-light dark:hover:bg-moc-green-pale/50",
+  ghost:
+    "text-moc-green-dark hover:bg-moc-green-pale dark:text-moc-green-light dark:hover:bg-moc-green-pale/50",
 };
 
 const sizes = {

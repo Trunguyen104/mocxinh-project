@@ -17,7 +17,14 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: `${BRAND.name} — ${BRAND.tagline}`,
   description: BRAND.description,
-  keywords: ["giấy handmade", "giấy cỏ tự nhiên", "eco paper", "Mộc Xinh", "giấy cỏ", "handmade paper Vietnam"],
+  keywords: [
+    "giấy handmade",
+    "giấy cỏ tự nhiên",
+    "eco paper",
+    "Mộc Xinh",
+    "giấy cỏ",
+    "handmade paper Vietnam",
+  ],
   openGraph: {
     title: `${BRAND.name} — ${BRAND.tagline}`,
     description: BRAND.description,
@@ -32,7 +39,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className={`${inter.variable} ${playfair.variable} h-full`} suppressHydrationWarning>
+    <html
+      lang="vi"
+      className={`${inter.variable} ${playfair.variable} h-full`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full antialiased bg-[var(--background)] text-[var(--foreground)]">
         <AppProvider>{children}</AppProvider>
       </body>

@@ -5,13 +5,50 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import { translations, type Lang, type TranslationKey } from "@/i18n/translations";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 type Theme = "light" | "dark";
+
+const THEME_KEY = "mx-theme";
+const LANG_KEY = "mx-lang";
+
+const themeListeners = new Set<() => void>();
+const langListeners = new Set<() => void>();
+
+function subscribeTheme(onStoreChange: () => void) {
+  themeListeners.add(onStoreChange);
+  return () => {
+    themeListeners.delete(onStoreChange);
+  };
+}
+
+function subscribeLang(onStoreChange: () => void) {
+  langListeners.add(onStoreChange);
+  return () => {
+    langListeners.delete(onStoreChange);
+  };
+}
+
+function emitTheme() {
+  themeListeners.forEach((listener) => listener());
+}
+
+function emitLang() {
+  langListeners.forEach((listener) => listener());
+}
+
+function getThemeSnapshot(): Theme {
+  if (typeof window === "undefined") return "light";
+  return (localStorage.getItem(THEME_KEY) as Theme) ?? "light";
+}
+
+function getLangSnapshot(): Lang {
+  if (typeof window === "undefined") return "vi";
+  return (localStorage.getItem(LANG_KEY) as Lang) ?? "vi";
+}
 
 interface AppContextValue {
   theme: Theme;
@@ -22,46 +59,27 @@ interface AppContextValue {
   t: (key: TranslationKey) => string;
 }
 
-// ─── Context ──────────────────────────────────────────────────────────────────
 const AppContext = createContext<AppContextValue | null>(null);
 
-// ─── Provider ─────────────────────────────────────────────────────────────────
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
-  const [lang, setLangState] = useState<Lang>("vi");
+  const theme = useSyncExternalStore<Theme>(subscribeTheme, getThemeSnapshot, () => "light");
+  const lang = useSyncExternalStore<Lang>(subscribeLang, getLangSnapshot, () => "vi");
 
-  // Restore from localStorage on mount
-  useEffect(() => {
-    const savedTheme = (localStorage.getItem("mx-theme") as Theme) ?? "light";
-    const savedLang = (localStorage.getItem("mx-lang") as Lang) ?? "vi";
-    setTheme(savedTheme);
-    setLangState(savedLang);
-    // Apply immediately to <html>
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
-
-  // Sync theme to <html> class + localStorage
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-    localStorage.setItem("mx-theme", theme);
-  }, [theme]);
+    root.classList.toggle("dark", theme === "dark");
+    root.lang = lang;
+  }, [theme, lang]);
 
   const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    const next: Theme = getThemeSnapshot() === "light" ? "dark" : "light";
+    localStorage.setItem(THEME_KEY, next);
+    emitTheme();
   }, []);
 
   const setLang = useCallback((l: Lang) => {
-    setLangState(l);
-    localStorage.setItem("mx-lang", l);
-    // Update html lang attribute
-    document.documentElement.lang = l;
+    localStorage.setItem(LANG_KEY, l);
+    emitLang();
   }, []);
 
   const t = useCallback(
@@ -72,15 +90,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <AppContext.Provider
-      value={{ theme, toggleTheme, isDark: theme === "dark", lang, setLang, t }}
-    >
+    <AppContext.Provider value={{ theme, toggleTheme, isDark: theme === "dark", lang, setLang, t }}>
       {children}
     </AppContext.Provider>
   );
 }
 
-// ─── Hook ─────────────────────────────────────────────────────────────────────
 export function useApp(): AppContextValue {
   const ctx = useContext(AppContext);
   if (!ctx) throw new Error("useApp must be used within AppProvider");

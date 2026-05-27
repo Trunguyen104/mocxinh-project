@@ -57,19 +57,10 @@ export function StoryExperience({ progress }: StoryExperienceProps) {
         <GrassBundlesScene weight={wBundles} />
         <PulpProcessScene weight={wPulp} />
         <MoldingScene weight={wMold} />
-        <FinishedPaperScene
-          weight={wPaper}
-          interactive={progress > 0.82}
-        />
+        <FinishedPaperScene weight={wPaper} interactive={progress > 0.82} />
       </group>
 
-      <ContactShadows
-        position={[0, -0.48, 0]}
-        opacity={0.4}
-        scale={12}
-        blur={2.5}
-        far={4}
-      />
+      <ContactShadows position={[0, -0.48, 0]} opacity={0.4} scale={12} blur={2.5} far={4} />
     </Suspense>
   );
 }

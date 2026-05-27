@@ -25,19 +25,33 @@ export function StorySection() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(headingRef.current, {
-        y: 40, opacity: 0, duration: 1, ease: "power3.out",
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
         scrollTrigger: { trigger: headingRef.current, start: "top 80%" },
       });
       gsap.from(".process-step", {
-        x: -40, opacity: 0, duration: 0.8, stagger: 0.18, ease: "power3.out",
+        x: -40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.18,
+        ease: "power3.out",
         scrollTrigger: { trigger: stepsRef.current, start: "top 75%" },
       });
       gsap.from(imageRef.current, {
-        scale: 0.92, opacity: 0, duration: 1.2, ease: "power3.out",
+        scale: 0.92,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
         scrollTrigger: { trigger: imageRef.current, start: "top 80%" },
       });
       gsap.from(".texture-thumb", {
-        y: 20, opacity: 0, duration: 0.7, stagger: 0.1, ease: "power3.out",
+        y: 20,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power3.out",
         scrollTrigger: { trigger: ".texture-row", start: "top 85%" },
       });
     }, sectionRef);
@@ -51,8 +65,14 @@ export function StorySection() {
       className="relative overflow-hidden bg-ivory-warm py-28 dark:bg-[var(--ivory-warm)] md:py-36"
     >
       <div className="pointer-events-none absolute inset-0 paper-texture opacity-50" aria-hidden />
-      <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full border border-olive/8 dark:border-olive/4" aria-hidden />
-      <div className="pointer-events-none absolute -bottom-20 -left-20 h-[400px] w-[400px] rounded-full bg-sage/5 blur-[80px] dark:bg-sage/3" aria-hidden />
+      <div
+        className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full border border-olive/8 dark:border-olive/4"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -bottom-20 -left-20 h-[400px] w-[400px] rounded-full bg-sage/5 blur-[80px] dark:bg-sage/3"
+        aria-hidden
+      />
 
       <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
         {/* Header */}
@@ -64,8 +84,10 @@ export function StorySection() {
             </p>
           </div>
           <h2 className="font-display text-4xl leading-tight text-kraft-dark md:text-5xl dark:text-kraft-dark">
-            {t("story_title_1")} <span className="italic text-olive dark:text-olive">{t("story_title_italic")}</span>
-            <br />{t("story_title_2")}
+            {t("story_title_1")}{" "}
+            <span className="italic text-olive dark:text-olive">{t("story_title_italic")}</span>
+            <br />
+            {t("story_title_2")}
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-olive-dark/75 dark:text-olive-dark/75">
             {t("story_subtitle")}
@@ -113,11 +135,15 @@ export function StorySection() {
                   <div className="absolute left-6 top-14 h-[calc(100%+0.5rem)] w-px bg-gradient-to-b from-olive/25 to-transparent dark:from-olive/15" />
                 )}
                 <div className="relative flex h-12 w-12 flex-none items-center justify-center rounded-full border border-olive/25 bg-ivory shadow-soft transition-all duration-500 group-hover:border-olive/50 group-hover:bg-sage-light dark:border-olive/15 dark:bg-[var(--surface)] dark:group-hover:bg-olive/15">
-                  <span className="text-xl" aria-hidden>{step.icon}</span>
+                  <span className="text-xl" aria-hidden>
+                    {step.icon}
+                  </span>
                 </div>
                 <div className="pb-2 pt-1">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-bold text-olive/40 dark:text-olive/30">{step.number}</span>
+                    <span className="font-mono text-xs font-bold text-olive/40 dark:text-olive/30">
+                      {step.number}
+                    </span>
                     <h3 className="font-display text-lg text-kraft-dark transition-colors duration-300 group-hover:text-olive-dark dark:text-kraft-dark">
                       {step.title}
                     </h3>
@@ -136,7 +162,9 @@ export function StorySection() {
                   <span className="text-lg">♻️</span>
                 </div>
                 <div>
-                  <h4 className="font-medium text-kraft-dark dark:text-kraft-dark">{t("story_eco_title")}</h4>
+                  <h4 className="font-medium text-kraft-dark dark:text-kraft-dark">
+                    {t("story_eco_title")}
+                  </h4>
                   <p className="mt-1.5 text-sm leading-relaxed text-olive-dark/70 dark:text-olive-dark/65">
                     {t("story_eco_desc")}
                   </p>
@@ -153,7 +181,10 @@ export function StorySection() {
           </p>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {[
-              { src: "/images/1dc34e6f-b9e5-491c-9886-13b2bfe18361.jpg", label: "Texture Giấy Gốc" },
+              {
+                src: "/images/1dc34e6f-b9e5-491c-9886-13b2bfe18361.jpg",
+                label: "Texture Giấy Gốc",
+              },
               { src: "/images/265ea7cd-b798-4d72-9c43-868db04c46ed.jpg", label: "Giấy Tự Nhiên" },
               { src: "/images/9e89018c-4900-43eb-870d-0c698709652a.jpg", label: "Cỏ Nguyên Liệu" },
               { src: "/images/7f9514d1-2b26-4749-a543-b5708449e1ad.jpg", label: "Bộ Sản Phẩm" },

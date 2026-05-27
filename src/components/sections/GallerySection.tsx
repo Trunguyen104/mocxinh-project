@@ -15,21 +15,53 @@ export function GallerySection() {
   const gridRef = useRef<HTMLDivElement>(null);
 
   const GALLERY_ITEMS = [
-    { src: "/images/a8b43079-7a27-41de-8231-7df90a1995cb.jpg", alt: "Bộ sưu tập sản phẩm Mộc Xinh", span: "col-span-2 row-span-2", label: t("gallery_label_1") },
-    { src: "/images/9e89018c-4900-43eb-870d-0c698709652a.jpg", alt: "Cỏ tự nhiên nguyên liệu", span: "col-span-1 row-span-1", label: t("gallery_label_2") },
-    { src: "/images/265ea7cd-b798-4d72-9c43-868db04c46ed.jpg", alt: "Tờ giấy tự nhiên", span: "col-span-1 row-span-1", label: t("gallery_label_3") },
-    { src: "/images/7f9514d1-2b26-4749-a543-b5708449e1ad.jpg", alt: "Sổ tay và thiệp handmade", span: "col-span-1 row-span-2", label: t("gallery_label_4") },
-    { src: "/images/1dc34e6f-b9e5-491c-9886-13b2bfe18361.jpg", alt: "Texture giấy gốc Mộc Xinh", span: "col-span-1 row-span-1", label: t("gallery_label_5") },
+    {
+      src: "/images/a8b43079-7a27-41de-8231-7df90a1995cb.jpg",
+      alt: "Bộ sưu tập sản phẩm Mộc Xinh",
+      span: "col-span-2 row-span-2",
+      label: t("gallery_label_1"),
+    },
+    {
+      src: "/images/9e89018c-4900-43eb-870d-0c698709652a.jpg",
+      alt: "Cỏ tự nhiên nguyên liệu",
+      span: "col-span-1 row-span-1",
+      label: t("gallery_label_2"),
+    },
+    {
+      src: "/images/265ea7cd-b798-4d72-9c43-868db04c46ed.jpg",
+      alt: "Tờ giấy tự nhiên",
+      span: "col-span-1 row-span-1",
+      label: t("gallery_label_3"),
+    },
+    {
+      src: "/images/7f9514d1-2b26-4749-a543-b5708449e1ad.jpg",
+      alt: "Sổ tay và thiệp handmade",
+      span: "col-span-1 row-span-2",
+      label: t("gallery_label_4"),
+    },
+    {
+      src: "/images/1dc34e6f-b9e5-491c-9886-13b2bfe18361.jpg",
+      alt: "Texture giấy gốc Mộc Xinh",
+      span: "col-span-1 row-span-1",
+      label: t("gallery_label_5"),
+    },
   ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(headRef.current, {
-        y: 30, opacity: 0, duration: 0.9, ease: "power3.out",
+        y: 30,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
         scrollTrigger: { trigger: headRef.current, start: "top 82%" },
       });
       gsap.from(".gallery-item", {
-        scale: 0.94, opacity: 0, duration: 0.85, stagger: 0.1, ease: "power3.out",
+        scale: 0.94,
+        opacity: 0,
+        duration: 0.85,
+        stagger: 0.1,
+        ease: "power3.out",
         scrollTrigger: { trigger: gridRef.current, start: "top 75%" },
       });
     }, sectionRef);
@@ -55,7 +87,8 @@ export function GallerySection() {
               </p>
             </div>
             <h2 className="font-display text-4xl text-kraft-dark dark:text-kraft-dark md:text-5xl">
-              {t("gallery_title_1")} <span className="italic text-olive dark:text-olive">{t("gallery_title_italic")}</span>
+              {t("gallery_title_1")}{" "}
+              <span className="italic text-olive dark:text-olive">{t("gallery_title_italic")}</span>
             </h2>
           </div>
           <p className="hidden max-w-xs text-right text-sm text-olive-dark/65 dark:text-olive-dark/60 md:block">
@@ -64,11 +97,7 @@ export function GallerySection() {
         </div>
 
         {/* Gallery grid */}
-        <div
-          ref={gridRef}
-          className="grid grid-cols-3 gap-4"
-          style={{ gridAutoRows: "200px" }}
-        >
+        <div ref={gridRef} className="grid grid-cols-3 gap-4" style={{ gridAutoRows: "200px" }}>
           {GALLERY_ITEMS.map((item, i) => (
             <div
               key={i}
