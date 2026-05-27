@@ -17,7 +17,7 @@ const PRODUCTS_DATA = [
     description: "Kích thước 210×297mm, 180-300gsm, phân hủy sinh học.",
     image: "/images/product-paper-a4.png",
     accent: "from-sage/20 to-ivory dark:from-sage/8 dark:to-[var(--ivory)]",
-    price: "85.000đ",
+    price: "**.000đ",
     name: "Giấy Handmade A4",
   },
   {
@@ -28,7 +28,7 @@ const PRODUCTS_DATA = [
     description: "32 trang giấy handmade A5, bìa cứng, dây bookmark tự nhiên.",
     image: "/images/product-notebook.png",
     accent: "from-beige/40 to-ivory dark:from-beige/10 dark:to-[var(--ivory)]",
-    price: "120.000đ",
+    price: "**.000đ",
     name: "Sổ Tay Eco",
   },
   {
@@ -39,7 +39,7 @@ const PRODUCTS_DATA = [
     description: "Đánh dấu sách với vẻ đẹp tự nhiên — mỗi chiếc là tác phẩm độc đáo.",
     image: "/images/product-bookmark.png",
     accent: "from-ivory-warm/60 to-ivory dark:from-[var(--ivory-warm)] dark:to-[var(--ivory)]",
-    price: "25.000đ",
+    price: "**.000đ",
     name: "Bookmark Eco",
   },
   {
@@ -50,7 +50,7 @@ const PRODUCTS_DATA = [
     description: "Thiệp từ giấy cỏ, kèm phong bì kraft.",
     image: "/images/product-card.png",
     accent: "from-beige-light/50 to-ivory dark:from-beige/8 dark:to-[var(--ivory)]",
-    price: "35.000đ",
+    price: "**.000đ",
     name: "Thiệp Eco Handmade",
   },
 ];

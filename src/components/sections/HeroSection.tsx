@@ -176,7 +176,7 @@ export function HeroSection() {
           {/* Floating mini image */}
           <div className="absolute -right-4 top-12 hidden overflow-hidden rounded-2xl shadow-card ring-4 ring-cream animate-float-slow dark:ring-[var(--background)] lg:block">
             <Image
-              src=""
+              src="/images/mascot.png"
               alt="Cỏ tự nhiên nguyên liệu"
               width={140}
               height={170}
