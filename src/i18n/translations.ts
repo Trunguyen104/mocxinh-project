@@ -41,8 +41,7 @@ export const translations = {
 
     // ── Story steps ────────────────────────────────────────────────────────────
     step1_title: "Thu hoạch cỏ",
-    step1_desc:
-      "Cỏ dại được thu gom từ các vườn trái cây địa phương — biến phế phẩm thành tài nguyên.",
+    step1_desc: "Cỏ dại được thu gom tại địa phương — biến phế phẩm thành tài nguyên.",
     step2_title: "Xử lý sợi",
     step2_desc:
       "Cỏ được ngâm, xử lý thủ công để tách sợi tự nhiên, không sử dụng hóa chất công nghiệp.",

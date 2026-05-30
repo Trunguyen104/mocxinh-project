@@ -37,7 +37,7 @@ export function Header() {
           <a href="#" className="group flex items-center gap-2" aria-label="Mộc Xinh - Trang chủ">
             <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-moc-green/20 transition-all duration-500 group-hover:ring-moc-green/50 group-hover:glow-green">
               <Image
-                src="/images/mocxinh-logo.jpg"
+                src="/images/becocut.png"
                 alt="Mộc Xinh Logo"
                 width={40}
                 height={40}

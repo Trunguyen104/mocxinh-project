@@ -6,7 +6,7 @@ import { BRAND, CONTACT } from "@/lib/constants";
 const SOCIAL = [
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/cogiaymocxinh",
     icon: (
       <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -15,7 +15,7 @@ const SOCIAL = [
   },
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/cogiaymocxinh",
     icon: (
       <svg
         className="h-4 w-4"
@@ -32,7 +32,7 @@ const SOCIAL = [
   },
   {
     label: "Zalo",
-    href: "#",
+    href: "https://zalo.me/0837638149",
     icon: (
       <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" />

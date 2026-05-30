@@ -195,7 +195,7 @@ export function ProductShowcase() {
           ))}
         </div>
 
-        {/* Feature band — Custom Orders */}
+        {/* Feature band — Custom Orders
         <div ref={featureRef} className="mt-16 overflow-hidden rounded-3xl shadow-paper">
           <div className="relative overflow-hidden bg-gradient-to-r from-kraft-dark to-olive-dark px-8 py-10 md:px-12">
             <div className="relative z-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
@@ -237,7 +237,7 @@ export function ProductShowcase() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

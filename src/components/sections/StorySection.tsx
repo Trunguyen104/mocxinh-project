@@ -112,7 +112,7 @@ export function StorySection() {
               </div>
             </div>
 
-            {/* Floating inset */}
+            {/* Floating inset
             <div className="absolute -bottom-8 -right-6 hidden overflow-hidden rounded-2xl shadow-card ring-4 ring-ivory-warm dark:ring-[var(--ivory-warm)] lg:block">
               <Image
                 src="/images/1dc34e6f-b9e5-491c-9886-13b2bfe18361.jpg"
@@ -124,7 +124,7 @@ export function StorySection() {
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-kraft-dark/60 to-transparent p-3">
                 <p className="text-xs font-medium text-ivory/90">Texture giấy gốc</p>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Steps column */}
@@ -155,7 +155,7 @@ export function StorySection() {
               </div>
             ))}
 
-            {/* Eco circular economy card */}
+            {/* Eco circular economy card
             <div className="mt-4 rounded-2xl border border-olive/15 bg-ivory/60 p-6 backdrop-blur-sm dark:border-olive/10 dark:bg-[var(--surface)]/50">
               <div className="flex items-start gap-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-kraft/10 dark:bg-kraft/8">
@@ -170,24 +170,24 @@ export function StorySection() {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
         {/* Texture gallery row */}
         <div className="texture-row mt-20">
-          <p className="mb-6 text-center text-xs font-medium uppercase tracking-[0.3em] text-olive/60 dark:text-olive/50">
+          {/* <p className="mb-6 text-center text-xs font-medium uppercase tracking-[0.3em] text-olive/60 dark:text-olive/50">
             {t("story_texture_label")}
-          </p>
+          </p> */}
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {[
               {
-                src: "/images/1dc34e6f-b9e5-491c-9886-13b2bfe18361.jpg",
+                src: "/images/cat-co.png",
                 label: "Texture Giấy Gốc",
               },
-              { src: "/images/265ea7cd-b798-4d72-9c43-868db04c46ed.jpg", label: "Giấy Tự Nhiên" },
-              { src: "/images/9e89018c-4900-43eb-870d-0c698709652a.jpg", label: "Cỏ Nguyên Liệu" },
-              { src: "/images/7f9514d1-2b26-4749-a543-b5708449e1ad.jpg", label: "Bộ Sản Phẩm" },
+              { src: "/images/nau-co.png", label: "Giấy Tự Nhiên" },
+              { src: "/images/phoi-giay.png", label: "Cỏ Nguyên Liệu" },
+              { src: "/images/thanh-pham.png", label: "Bộ Sản Phẩm" },
             ].map((item) => (
               <div
                 key={item.src}

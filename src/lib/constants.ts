@@ -79,6 +79,6 @@ export const PRODUCTS = [
 
 export const CONTACT = {
   address: "600 Nguyễn Văn Cừ, Ninh Kiều, Cần Thơ",
-  email: "hello@mocxinh.vn",
-  phone: "+84 292 000 0000",
+  email: "mocxinh.handmade@gmail.com",
+  phone: "+84 837 638 149",
 } as const;
