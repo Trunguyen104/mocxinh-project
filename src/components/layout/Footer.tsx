@@ -45,6 +45,8 @@ export function Footer() {
   const { t } = useApp();
 
   const navLinks = [
+    { href: "#about", label: t("nav_about") },
+    { href: "#team", label: t("nav_team") },
     { href: "#story", label: t("nav_story") },
     { href: "#products", label: t("nav_products") },
     { href: "#values", label: t("nav_values") },

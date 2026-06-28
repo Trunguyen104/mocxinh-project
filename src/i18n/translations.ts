@@ -7,12 +7,86 @@ export type TranslationKey = keyof typeof translations.vi;
 export const translations = {
   vi: {
     // ── Nav ────────────────────────────────────────────────────────────────────
+    nav_about: "Về dự án",
+    nav_team: "Thành viên",
     nav_story: "Câu chuyện",
     nav_products: "Sản phẩm",
     nav_values: "Giá trị bền vững",
     nav_contact: "Liên hệ",
     nav_contact_btn: "Liên hệ",
     nav_contact_mobile: "Liên hệ ngay",
+
+    // ── About ──────────────────────────────────────────────────────────────────
+    about_badge: "Về dự án",
+    about_title_1: "Mộc Xinh —",
+    about_title_italic: "Sinh ra từ cỏ dại",
+    about_subtitle:
+      "Một dự án khởi nghiệp sinh viên với khát vọng biến những điều bình dị của thiên nhiên thành sản phẩm có giá trị, lan tỏa lối sống xanh bền vững.",
+    about_desc_1:
+      "Mộc Xinh ra đời năm 2026 từ ý tưởng của nhóm sinh viên Đại học FPT Cần Thơ — những người tin rằng cỏ dại hoàn toàn có thể trở thành tờ giấy nghệ thuật đẹp đẽ và thân thiện với môi trường.",
+    about_desc_2:
+      "Chúng tôi không chỉ tạo ra giấy — chúng tôi tạo ra một câu chuyện: biến phế phẩm nông nghiệp thành sản phẩm sáng tạo, góp phần vào kinh tế tuần hoàn và nâng cao ý thức bảo vệ môi trường trong cộng đồng.",
+    about_mission_label: "Sứ mệnh",
+    about_mission: "Tái sinh thiên nhiên qua từng tờ giấy thủ công",
+    about_vision_label: "Tầm nhìn",
+    about_vision: "Trở thành thương hiệu giấy thủ công xanh tiêu biểu tại Đồng bằng sông Cửu Long",
+    about_founded_label: "Năm thành lập",
+    about_founded: "2026",
+    about_location_label: "Địa điểm",
+    about_location: "Cần Thơ, Việt Nam",
+    about_university_label: "Trường",
+    about_university: "Đại học FPT Cần Thơ",
+    about_stat1_value: "100%",
+    about_stat1_label: "Thủ công",
+    about_stat2_value: "0%",
+    about_stat2_label: "Hóa chất",
+    about_stat3_value: "6",
+    about_stat3_label: "Thành viên",
+    about_stat4_value: "2026",
+    about_stat4_label: "Thành lập",
+
+    // ── Team ───────────────────────────────────────────────────────────────────
+    team_badge: "Đội ngũ sáng lập",
+    team_title_1: "Những con người",
+    team_title_italic: "tạo nên Mộc Xinh",
+    team_subtitle:
+      "6 sinh viên với đam mê sáng tạo và khát vọng đổi mới — cùng nhau biến giấc mơ xanh thành hiện thực.",
+    team_member1_name: "Lê Mỹ Trà Giang",
+    team_member1_title: "CEO",
+    team_member1_role: "Chief Executive Officer",
+    team_member1_role_vi: "Giám đốc điều hành",
+    team_member1_desc:
+      "Quản lý toàn bộ dự án; phân công công việc; theo dõi tiến độ; đại diện làm việc với giảng viên/đối tác; xây dựng định hướng thương hiệu và chiến lược phát triển.",
+    team_member2_name: "Nguyễn Kim Bảo Nguyên",
+    team_member2_title: "COO",
+    team_member2_role: "Chief Operating Officer",
+    team_member2_role_vi: "Giám đốc Vận hành",
+    team_member2_desc:
+      "Quản lý quy trình sản xuất giấy; theo dõi nguyên liệu và chất lượng sản phẩm; tối ưu quy trình làm việc; hỗ trợ vận hành MVP.",
+    team_member3_name: "Lê Nhựt Huy",
+    team_member3_title: "CMO",
+    team_member3_role: "Chief Marketing Officer",
+    team_member3_role_vi: "Giám đốc Marketing",
+    team_member3_desc:
+      "Nghiên cứu thị trường; xây dựng chiến lược marketing; quản lý mạng xã hội; tìm kiếm khách hàng và đối tác; hỗ trợ bán hàng và quảng bá sản phẩm.",
+    team_member4_name: "Nguyễn Trung Nguyên",
+    team_member4_title: "CTO",
+    team_member4_role: "Chief Technology Officer",
+    team_member4_role_vi: "Giám đốc Công nghệ",
+    team_member4_desc:
+      "Xây dựng website/landing page; quản lý công nghệ và dữ liệu; hỗ trợ các công cụ số phục vụ hoạt động kinh doanh và quảng bá.",
+    team_member5_name: "Lê Nhựt Huy",
+    team_member5_title: "CFO",
+    team_member5_role: "Chief Financial Officer",
+    team_member5_role_vi: "Giám đốc Tài chính",
+    team_member5_desc:
+      "Theo dõi chi phí sản xuất; lập kế hoạch ngân sách; tính giá thành sản phẩm; quản lý tài chính và hỗ trợ báo cáo doanh thu – lợi nhuận.",
+    team_member6_name: "Trương Trọng Tường Vy",
+    team_member6_title: "CPO",
+    team_member6_role: "Chief Product Officer",
+    team_member6_role_vi: "Giám đốc Sản phẩm",
+    team_member6_desc:
+      "Thiết kế logo, bao bì và nhận diện thương hiệu; thiết kế mẫu giấy và sản phẩm handmade; xây dựng hình ảnh sản phẩm.",
 
     // ── Hero ───────────────────────────────────────────────────────────────────
     hero_badge: "Giấy cỏ tự nhiên",
@@ -60,7 +134,7 @@ export const translations = {
       "Tất cả ảnh chụp trực tiếp sản phẩm thực tế — không chỉnh sửa màu sắc hay thay thế.",
     gallery_note:
       "Mỗi sản phẩm là duy nhất — texture và màu sắc có thể khác nhau do đặc tính thủ công của giấy cỏ tự nhiên.",
-    gallery_label_1: "Bộ sưu tập 2024",
+    gallery_label_1: "Bộ sưu tập 2026",
     gallery_label_2: "Nguyên liệu cỏ dại",
     gallery_label_3: "Giấy tự nhiên",
     gallery_label_4: "Sổ tay & thiệp",
@@ -144,12 +218,86 @@ export const translations = {
 
   en: {
     // ── Nav ────────────────────────────────────────────────────────────────────
+    nav_about: "About",
+    nav_team: "Team",
     nav_story: "Our Story",
     nav_products: "Products",
     nav_values: "Our Values",
     nav_contact: "Contact",
     nav_contact_btn: "Contact",
     nav_contact_mobile: "Get in Touch",
+
+    // ── About ──────────────────────────────────────────────────────────────────
+    about_badge: "About the Project",
+    about_title_1: "Mộc Xinh —",
+    about_title_italic: "Born from Wild Grass",
+    about_subtitle:
+      "A student startup with a passion to transform nature's simplest elements into meaningful products, spreading a sustainable green lifestyle.",
+    about_desc_1:
+      "Mộc Xinh was founded in 2026 by a group of students from FPT University Cần Thơ — people who believe that wild grass can become beautiful, eco-friendly art paper.",
+    about_desc_2:
+      "We don't just make paper — we craft a story: turning agricultural waste into creative products, contributing to a circular economy and raising environmental awareness in the community.",
+    about_mission_label: "Mission",
+    about_mission: "Rebirth of nature through every handcrafted sheet of paper",
+    about_vision_label: "Vision",
+    about_vision: "To become the leading green handmade paper brand in the Mekong Delta",
+    about_founded_label: "Founded",
+    about_founded: "2026",
+    about_location_label: "Location",
+    about_location: "Cần Thơ, Vietnam",
+    about_university_label: "University",
+    about_university: "FPT University Cần Thơ",
+    about_stat1_value: "100%",
+    about_stat1_label: "Handmade",
+    about_stat2_value: "0%",
+    about_stat2_label: "Chemicals",
+    about_stat3_value: "6",
+    about_stat3_label: "Members",
+    about_stat4_value: "2026",
+    about_stat4_label: "Founded",
+
+    // ── Team ───────────────────────────────────────────────────────────────────
+    team_badge: "Founding Team",
+    team_title_1: "The people who",
+    team_title_italic: "created Mộc Xinh",
+    team_subtitle:
+      "6 students with a passion for creativity and innovation — together turning a green dream into reality.",
+    team_member1_name: "Nguyễn Văn An",
+    team_member1_title: "CEO",
+    team_member1_role: "Chief Executive Officer",
+    team_member1_role_vi: "Giám đốc Điều hành",
+    team_member1_desc:
+      "Manages the entire project; assigns tasks; tracks progress; liaises with lecturers/partners; builds brand direction and development strategy.",
+    team_member2_name: "Trần Thị Bích",
+    team_member2_title: "COO",
+    team_member2_role: "Chief Operating Officer",
+    team_member2_role_vi: "Giám đốc Vận hành",
+    team_member2_desc:
+      "Manages the paper production process; monitors materials and product quality; optimizes workflows; supports MVP operations.",
+    team_member3_name: "Lê Minh Châu",
+    team_member3_title: "CMO",
+    team_member3_role: "Chief Marketing Officer",
+    team_member3_role_vi: "Giám đốc Marketing",
+    team_member3_desc:
+      "Conducts market research; builds marketing strategy; manages social media; finds customers and partners; supports sales and product promotion.",
+    team_member4_name: "Phạm Thị Dung",
+    team_member4_title: "CTO",
+    team_member4_role: "Chief Technology Officer",
+    team_member4_role_vi: "Giám đốc Công nghệ",
+    team_member4_desc:
+      "Builds the website/landing page; manages technology and data; supports digital tools for business operations and promotion.",
+    team_member5_name: "Hoàng Văn Em",
+    team_member5_title: "CFO",
+    team_member5_role: "Chief Financial Officer",
+    team_member5_role_vi: "Giám đốc Tài chính",
+    team_member5_desc:
+      "Tracks production costs; plans budgets; calculates product pricing; manages finances and supports revenue–profit reporting.",
+    team_member6_name: "Ngô Thị Phương",
+    team_member6_title: "CPO",
+    team_member6_role: "Chief Product Officer",
+    team_member6_role_vi: "Giám đốc Sản phẩm",
+    team_member6_desc:
+      "Designs logo, packaging and brand identity; designs paper patterns and handmade products; builds product visual identity.",
 
     // ── Hero ───────────────────────────────────────────────────────────────────
     hero_badge: "Natural Grass Paper",
@@ -198,7 +346,7 @@ export const translations = {
       "All photos are taken directly from real products — no color editing or replacement.",
     gallery_note:
       "Each product is unique — texture and color may vary due to the handmade nature of natural grass paper.",
-    gallery_label_1: "2024 Collection",
+    gallery_label_1: "2026 Collection",
     gallery_label_2: "Raw Grass Material",
     gallery_label_3: "Natural Paper",
     gallery_label_4: "Notebooks & Cards",
