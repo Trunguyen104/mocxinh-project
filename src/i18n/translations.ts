@@ -75,7 +75,7 @@ export const translations = {
     team_member4_role_vi: "Giám đốc Công nghệ",
     team_member4_desc:
       "Xây dựng website/landing page; quản lý công nghệ và dữ liệu; hỗ trợ các công cụ số phục vụ hoạt động kinh doanh và quảng bá.",
-    team_member5_name: "Lê Nhựt Huy",
+    team_member5_name: "Trần Khôi Nguyên",
     team_member5_title: "CFO",
     team_member5_role: "Chief Financial Officer",
     team_member5_role_vi: "Giám đốc Tài chính",
