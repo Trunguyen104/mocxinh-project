@@ -147,7 +147,7 @@ export function HeroSection() {
           <div ref={ctaRef} className="mt-10 flex flex-wrap items-center gap-4">
             <Button
               onClick={() =>
-                document.getElementById("story")?.scrollIntoView({ behavior: "smooth" })
+                document.getElementById("workshop")?.scrollIntoView({ behavior: "smooth" })
               }
             >
               {t("hero_cta_primary")}

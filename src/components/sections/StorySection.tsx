@@ -22,6 +22,44 @@ export function StorySection() {
     { number: "04", title: t("step4_title"), description: t("step4_desc"), icon: "☀️" },
   ];
 
+  const MATERIALS = [
+    {
+      icon: "🍍",
+      name: t("mat1_name"),
+      trait: t("mat1_trait"),
+      desc: t("mat1_desc"),
+      badge: "Độ dai & Vân sần",
+    },
+    {
+      icon: "🎋",
+      name: t("mat2_name"),
+      trait: t("mat2_trait"),
+      desc: t("mat2_desc"),
+      badge: "Độ đanh chắc",
+    },
+    {
+      icon: "🌾",
+      name: t("mat3_name"),
+      trait: t("mat3_trait"),
+      desc: t("mat3_desc"),
+      badge: "Khung kết cấu",
+    },
+    {
+      icon: "🏮",
+      name: t("mat4_name"),
+      trait: t("mat4_trait"),
+      desc: t("mat4_desc"),
+      badge: "Xuyên sáng & Chịu ẩm",
+    },
+    {
+      icon: "🌿",
+      name: t("mat5_name"),
+      trait: t("mat5_trait"),
+      desc: t("mat5_desc"),
+      badge: "100% Sinh thái",
+    },
+  ];
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(headingRef.current, {
@@ -45,6 +83,14 @@ export function StorySection() {
         duration: 1.2,
         ease: "power3.out",
         scrollTrigger: { trigger: imageRef.current, start: "top 80%" },
+      });
+      gsap.from(".material-card", {
+        y: 28,
+        opacity: 0,
+        duration: 0.75,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".materials-grid", start: "top 80%" },
       });
       gsap.from(".texture-thumb", {
         y: 20,
@@ -106,29 +152,15 @@ export function StorySection() {
                 height={700}
                 className="h-[500px] w-full object-cover lg:h-[620px]"
               />
-              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-kraft-dark/30 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-kraft-dark/40 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <p className="font-display text-lg text-ivory/95">{t("story_quote")}</p>
               </div>
             </div>
-
-            {/* Floating inset
-            <div className="absolute -bottom-8 -right-6 hidden overflow-hidden rounded-2xl shadow-card ring-4 ring-ivory-warm dark:ring-[var(--ivory-warm)] lg:block">
-              <Image
-                src="/images/1dc34e6f-b9e5-491c-9886-13b2bfe18361.jpg"
-                alt="Texture giấy gốc"
-                width={180}
-                height={140}
-                className="h-36 w-44 object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-kraft-dark/60 to-transparent p-3">
-                <p className="text-xs font-medium text-ivory/90">Texture giấy gốc</p>
-              </div>
-            </div> */}
           </div>
 
           {/* Steps column */}
-          <div ref={stepsRef} className="order-1 flex flex-col gap-8 lg:order-2 lg:pt-4">
+          <div ref={stepsRef} className="order-1 flex flex-col gap-8 lg:order-2 lg:pt-2">
             {PROCESS_STEPS.map((step, i) => (
               <div key={step.number} className="process-step group relative flex gap-5">
                 {i < PROCESS_STEPS.length - 1 && (
@@ -155,39 +187,76 @@ export function StorySection() {
               </div>
             ))}
 
-            {/* Eco circular economy card
-            <div className="mt-4 rounded-2xl border border-olive/15 bg-ivory/60 p-6 backdrop-blur-sm dark:border-olive/10 dark:bg-[var(--surface)]/50">
+            {/* 3-stage Quality Control card */}
+            <div className="mt-2 rounded-2xl border border-olive/15 bg-ivory/75 p-6 shadow-soft backdrop-blur-sm dark:border-olive/10 dark:bg-[var(--surface)]/60">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-kraft/10 dark:bg-kraft/8">
-                  <span className="text-lg">♻️</span>
+                <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-moc-green/12 dark:bg-moc-green/10">
+                  <span className="text-lg">✨</span>
                 </div>
                 <div>
-                  <h4 className="font-medium text-kraft-dark dark:text-kraft-dark">
+                  <h4 className="font-display text-base font-medium text-kraft-dark dark:text-kraft-dark">
                     {t("story_eco_title")}
                   </h4>
-                  <p className="mt-1.5 text-sm leading-relaxed text-olive-dark/70 dark:text-olive-dark/65">
+                  <p className="mt-1.5 text-xs leading-relaxed text-olive-dark/75 dark:text-olive-dark/65">
                     {t("story_eco_desc")}
                   </p>
                 </div>
               </div>
-            </div> */}
+            </div>
+          </div>
+        </div>
+
+        {/* 5 Core Botanical Materials Grid */}
+        <div className="materials-grid mt-24">
+          <div className="mb-10 text-center">
+            <p className="mb-2 text-xs font-medium uppercase tracking-[0.28em] text-olive dark:text-olive">
+              {t("story_texture_label")}
+            </p>
+            <h3 className="font-display text-3xl text-kraft-dark dark:text-kraft-dark md:text-4xl">
+              {t("materials_heading")}
+            </h3>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-olive-dark/70 dark:text-olive-dark/65">
+              {t("materials_subheading")}
+            </p>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+            {MATERIALS.map((mat) => (
+              <div
+                key={mat.name}
+                className="material-card group relative flex flex-col rounded-2xl border border-kraft/12 bg-ivory/90 p-5 shadow-soft transition-all duration-500 hover:-translate-y-1.5 hover:border-olive/30 hover:shadow-paper dark:border-kraft/8 dark:bg-[var(--surface)]"
+              >
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-olive/10 text-xl dark:bg-olive/8">
+                    {mat.icon}
+                  </span>
+                  <span className="rounded-full bg-kraft/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-kraft-dark dark:bg-kraft/15 dark:text-kraft">
+                    {mat.badge}
+                  </span>
+                </div>
+                <h4 className="font-display text-base text-kraft-dark dark:text-kraft-dark">
+                  {mat.name}
+                </h4>
+                <p className="mt-1 text-xs font-medium text-olive dark:text-olive">{mat.trait}</p>
+                <p className="mt-2.5 text-xs leading-relaxed text-olive-dark/70 dark:text-olive-dark/65">
+                  {mat.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Texture gallery row */}
-        <div className="texture-row mt-20">
-          {/* <p className="mb-6 text-center text-xs font-medium uppercase tracking-[0.3em] text-olive/60 dark:text-olive/50">
-            {t("story_texture_label")}
-          </p> */}
+        <div className="texture-row mt-16">
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {[
               {
                 src: "/images/cat-co.png",
-                label: "Texture Giấy Gốc",
+                label: "Xơ Sợi Cỏ & Lá Dứa",
               },
-              { src: "/images/nau-co.png", label: "Giấy Tự Nhiên" },
-              { src: "/images/phoi-giay.png", label: "Cỏ Nguyên Liệu" },
-              { src: "/images/thanh-pham.png", label: "Bộ Sản Phẩm" },
+              { src: "/images/nau-co.png", label: "Ủ Mềm & Nghiền Xơ" },
+              { src: "/images/phoi-giay.png", label: "Phôi Giấy Thực Vật" },
+              { src: "/images/thanh-pham.png", label: "Thành Phẩm Thủ Công" },
             ].map((item) => (
               <div
                 key={item.src}

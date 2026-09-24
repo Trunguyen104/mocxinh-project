@@ -13,9 +13,9 @@ export function Header() {
 
   const NAV_LINKS = [
     { href: "#about", label: t("nav_about") },
-    { href: "#team", label: t("nav_team") },
     { href: "#story", label: t("nav_story") },
     { href: "#products", label: t("nav_products") },
+    { href: "#workshop", label: t("nav_workshop") },
     { href: "#values", label: t("nav_values") },
     { href: "#contact", label: t("nav_contact") },
   ];
@@ -55,7 +55,7 @@ export function Header() {
 
         {/* ── Desktop nav ─────────────────────────────────────────────────── */}
         <nav
-          className="hidden items-center justify-center gap-7 md:flex"
+          className="hidden items-center justify-center gap-6 md:flex"
           aria-label="Điều hướng chính"
         >
           {NAV_LINKS.map((link) => (
@@ -74,7 +74,7 @@ export function Header() {
           <LangToggle />
           <ThemeToggle />
           <a
-            href="#contact"
+            href="#workshop"
             className="ml-1 rounded-full border border-moc-green/40 bg-moc-green/8 px-5 py-2 text-xs font-medium uppercase tracking-[0.12em] text-moc-green-dark transition-all duration-500 hover:bg-moc-green hover:text-white hover:border-moc-green hover:shadow-soft dark:border-moc-green/30 dark:bg-moc-green/6 dark:text-moc-green-light dark:hover:bg-moc-green dark:hover:text-white whitespace-nowrap"
           >
             {t("nav_contact_btn")}
@@ -134,7 +134,7 @@ export function Header() {
           <div className="mt-3 flex items-center gap-3">
             <LangToggle />
             <a
-              href="#contact"
+              href="#workshop"
               onClick={() => setMobileOpen(false)}
               className="flex-1 rounded-full bg-olive/15 py-3 text-center text-sm font-medium text-olive-dark transition-colors hover:bg-olive/25 dark:bg-olive/10 dark:text-olive-dark"
             >

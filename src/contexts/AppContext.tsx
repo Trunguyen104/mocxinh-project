@@ -5,7 +5,8 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useSyncExternalStore,
+  useMemo,
+  useState,
   type ReactNode,
 } from "react";
 import { translations, type Lang, type TranslationKey } from "@/i18n/translations";
@@ -14,41 +15,6 @@ type Theme = "light" | "dark";
 
 const THEME_KEY = "mx-theme";
 const LANG_KEY = "mx-lang";
-
-const themeListeners = new Set<() => void>();
-const langListeners = new Set<() => void>();
-
-function subscribeTheme(onStoreChange: () => void) {
-  themeListeners.add(onStoreChange);
-  return () => {
-    themeListeners.delete(onStoreChange);
-  };
-}
-
-function subscribeLang(onStoreChange: () => void) {
-  langListeners.add(onStoreChange);
-  return () => {
-    langListeners.delete(onStoreChange);
-  };
-}
-
-function emitTheme() {
-  themeListeners.forEach((listener) => listener());
-}
-
-function emitLang() {
-  langListeners.forEach((listener) => listener());
-}
-
-function getThemeSnapshot(): Theme {
-  if (typeof window === "undefined") return "light";
-  return (localStorage.getItem(THEME_KEY) as Theme) ?? "light";
-}
-
-function getLangSnapshot(): Lang {
-  if (typeof window === "undefined") return "vi";
-  return (localStorage.getItem(LANG_KEY) as Lang) ?? "vi";
-}
 
 interface AppContextValue {
   theme: Theme;
@@ -62,8 +28,22 @@ interface AppContextValue {
 const AppContext = createContext<AppContextValue | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const theme = useSyncExternalStore<Theme>(subscribeTheme, getThemeSnapshot, () => "light");
-  const lang = useSyncExternalStore<Lang>(subscribeLang, getLangSnapshot, () => "vi");
+  const [theme, setThemeState] = useState<Theme>("light");
+  const [lang, setLangState] = useState<Lang>("vi");
+
+  // Hydrate persisted preferences once on mount to avoid SSR/client hydration mismatch
+  useEffect(() => {
+    queueMicrotask(() => {
+      const savedTheme = localStorage.getItem(THEME_KEY);
+      if (savedTheme === "light" || savedTheme === "dark") {
+        setThemeState(savedTheme);
+      }
+      const savedLang = localStorage.getItem(LANG_KEY);
+      if (savedLang === "vi" || savedLang === "en") {
+        setLangState(savedLang);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -72,14 +52,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [theme, lang]);
 
   const toggleTheme = useCallback(() => {
-    const next: Theme = getThemeSnapshot() === "light" ? "dark" : "light";
-    localStorage.setItem(THEME_KEY, next);
-    emitTheme();
+    setThemeState((prev) => {
+      const next: Theme = prev === "light" ? "dark" : "light";
+      localStorage.setItem(THEME_KEY, next);
+      return next;
+    });
   }, []);
 
   const setLang = useCallback((l: Lang) => {
     localStorage.setItem(LANG_KEY, l);
-    emitLang();
+    setLangState(l);
   }, []);
 
   const t = useCallback(
@@ -89,11 +71,19 @@ export function AppProvider({ children }: { children: ReactNode }) {
     [lang],
   );
 
-  return (
-    <AppContext.Provider value={{ theme, toggleTheme, isDark: theme === "dark", lang, setLang, t }}>
-      {children}
-    </AppContext.Provider>
+  const contextValue = useMemo<AppContextValue>(
+    () => ({
+      theme,
+      toggleTheme,
+      isDark: theme === "dark",
+      lang,
+      setLang,
+      t,
+    }),
+    [theme, toggleTheme, lang, setLang, t],
   );
+
+  return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
 }
 
 export function useApp(): AppContextValue {

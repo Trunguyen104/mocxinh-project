@@ -9,39 +9,40 @@ export const translations = {
     // ── Nav ────────────────────────────────────────────────────────────────────
     nav_about: "Về dự án",
     nav_team: "Thành viên",
-    nav_story: "Câu chuyện",
+    nav_story: "Nguyên liệu & Quy trình",
     nav_products: "Sản phẩm",
+    nav_workshop: "Workshop",
     nav_values: "Giá trị bền vững",
     nav_contact: "Liên hệ",
-    nav_contact_btn: "Liên hệ",
-    nav_contact_mobile: "Liên hệ ngay",
+    nav_contact_btn: "Đăng ký Workshop",
+    nav_contact_mobile: "Đăng ký Workshop ngay",
 
     // ── About ──────────────────────────────────────────────────────────────────
     about_badge: "Về dự án",
     about_title_1: "Mộc Xinh —",
-    about_title_italic: "Sinh ra từ cỏ dại",
+    about_title_italic: "Sinh ra từ sợi thực vật",
     about_subtitle:
-      "Một dự án khởi nghiệp sinh viên với khát vọng biến những điều bình dị của thiên nhiên thành sản phẩm có giá trị, lan tỏa lối sống xanh bền vững.",
+      "Thương hiệu giấy thủ công và sản phẩm sáng tạo sinh thái từ sợi cỏ tự nhiên và phụ phẩm nông nghiệp (lá dứa, bã mía, cây sậy), lan tỏa lối sống xanh bền vững.",
     about_desc_1:
-      "Mộc Xinh ra đời năm 2026 từ ý tưởng của nhóm sinh viên Đại học FPT Cần Thơ — những người tin rằng cỏ dại hoàn toàn có thể trở thành tờ giấy nghệ thuật đẹp đẽ và thân thiện với môi trường.",
+      "Mộc Xinh ra đời năm 2026 tại Đại học FPT Cần Thơ với khát vọng khai thác nguồn phụ phẩm thực vật bản địa giàu xơ sợi để chế tác nên những tấm giấy mộc độc bản, an toàn và không hóa chất tẩy trắng công nghiệp.",
     about_desc_2:
-      "Chúng tôi không chỉ tạo ra giấy — chúng tôi tạo ra một câu chuyện: biến phế phẩm nông nghiệp thành sản phẩm sáng tạo, góp phần vào kinh tế tuần hoàn và nâng cao ý thức bảo vệ môi trường trong cộng đồng.",
+      "Bên cạnh các dòng sản phẩm thủ công ứng dụng, Mộc Xinh còn mang đến không gian Workshop trải nghiệm — nơi mỗi người trực tiếp chạm vào kết cấu xơ sợi mộc mạc và tự tay cá nhân hóa tác phẩm nghệ thuật của riêng mình.",
     about_mission_label: "Sứ mệnh",
-    about_mission: "Tái sinh thiên nhiên qua từng tờ giấy thủ công",
+    about_mission: "Tái sinh phụ phẩm thực vật qua từng tờ giấy và trải nghiệm thủ công",
     about_vision_label: "Tầm nhìn",
     about_vision: "Trở thành thương hiệu giấy thủ công xanh tiêu biểu tại Đồng bằng sông Cửu Long",
     about_founded_label: "Năm thành lập",
     about_founded: "2026",
     about_location_label: "Địa điểm",
-    about_location: "Cần Thơ, Việt Nam",
+    about_location: "600 Nguyễn Văn Cừ, An Bình, Cần Thơ",
     about_university_label: "Trường",
     about_university: "Đại học FPT Cần Thơ",
     about_stat1_value: "100%",
     about_stat1_label: "Thủ công",
     about_stat2_value: "0%",
-    about_stat2_label: "Hóa chất",
-    about_stat3_value: "6",
-    about_stat3_label: "Thành viên",
+    about_stat2_label: "Thuốc tẩy",
+    about_stat3_value: "5+",
+    about_stat3_label: "Loại xơ sợi",
     about_stat4_value: "2026",
     about_stat4_label: "Thành lập",
 
@@ -89,42 +90,63 @@ export const translations = {
       "Thiết kế logo, bao bì và nhận diện thương hiệu; thiết kế mẫu giấy và sản phẩm handmade; xây dựng hình ảnh sản phẩm.",
 
     // ── Hero ───────────────────────────────────────────────────────────────────
-    hero_badge: "Giấy cỏ tự nhiên",
+    hero_badge: "Giấy thủ công từ sợi thực vật",
     hero_tagline: "Tái sinh từ thiên nhiên",
     hero_description:
-      "Giấy thủ công từ cỏ dại và sợi tự nhiên — hành trình biến những điều mộc mạc của thiên nhiên thành từng tờ giấy thân thiện và gần gũi.",
-    hero_cta_primary: "Khám phá câu chuyện",
-    hero_cta_secondary: "Xem sản phẩm",
+      "Chế tác từ sợi cỏ tự nhiên, lá dứa, bã mía, cây sậy và giấy Dó — lưu giữ trọn vẹn kết cấu mộc mạc và khơi nguồn cảm hứng sáng tạo thủ công.",
+    hero_cta_primary: "Tham gia Workshop",
+    hero_cta_secondary: "Khám phá sản phẩm",
     hero_scroll: "Cuộn",
-    hero_stat_natural: "Tự nhiên",
-    hero_stat_eco: "Thân thiện",
-    hero_stat_origin: "Nguồn gốc",
+    hero_stat_natural: "Xơ thực vật",
+    hero_stat_eco: "Không tẩy trắng",
+    hero_stat_origin: "Cần Thơ",
 
-    // ── Story ──────────────────────────────────────────────────────────────────
-    story_badge: "Hành trình Mộc Xinh",
-    story_title_1: "Từ đồng cỏ",
-    story_title_italic: "hoang dại",
-    story_title_2: "đến tờ giấy nghệ thuật",
+    // ── Story & Materials ──────────────────────────────────────────────────────
+    story_badge: "Nguyên liệu & Quy trình chế tác",
+    story_title_1: "Từ phụ phẩm thực vật",
+    story_title_italic: "bản địa",
+    story_title_2: "đến tấm giấy mộc độc bản",
     story_subtitle:
-      "Mộc Xinh ra đời từ câu hỏi giản dị: điều gì sẽ xảy ra nếu cỏ dại — thứ người ta thường loại bỏ — được trao một cuộc sống mới?",
-    story_quote: '"Mỗi tờ giấy là một câu chuyện từ thiên nhiên"',
-    story_eco_title: "Kinh tế tuần hoàn",
+      "Qua 4 phiên bản R&D (MVP), Mộc Xinh hoàn thiện quy trình xử lý cơ – sinh học khép kín, phối trộn sợi cỏ cùng lá dứa, bã mía, cây sậy và giấy Dó mà không dùng hóa chất tẩy trắng công nghiệp.",
+    story_quote: '"Mỗi bề mặt giấy là một kết cấu xơ sợi sống động từ thiên nhiên"',
+    story_eco_title: "Kiểm soát chất lượng 3 giai đoạn",
     story_eco_desc:
-      "Cỏ dại từ các nhà vườn địa phương được thu gom và tái sinh, giảm thiểu chất thải nông nghiệp.",
-    story_texture_label: "Texture thực tế — chụp trực tiếp sản phẩm",
+      "Tuyển chọn nguyên liệu sạch không ẩm mốc (Đầu vào) → Chuẩn hóa kích thước & độ chắc chắn khi gia công (Trong quá trình) → Kiểm định độ bám màu nước & acrylic trước khi trao tay khách hàng (Đầu ra).",
+    story_texture_label: "Hệ nguyên liệu thực vật & Vật liệu phụ trợ xanh",
+    materials_heading: "5 Nguồn Chất Liệu Xơ Sợi Chủ Đạo",
+    materials_subheading:
+      "Sự kết hợp tỷ lệ vàng giữa các loại xơ thực vật giúp giấy Mộc Xinh đạt độ đầm tay, bám màu nước Thiên Long và bút acrylic vượt trội mà không bị lem nhòe hay rách bục.",
+    mat1_name: "Lá dứa (Giấy lá dứa)",
+    mat1_trait: "Dày, vân sần tự nhiên, độ dai cao",
+    mat1_desc: "Tạo độ dai chịu lực và bề mặt sần nghệ thuật cho Tranh Đông Hồ A5 & Bookmark.",
+    mat2_name: "Bã mía (Giấy mía)",
+    mat2_trait: "Xơ đanh chắc, cứng cáp, đầm tay",
+    mat2_desc: "Tăng độ cứng cơ học và độ phẳng bề mặt cho bìa, ruột Sổ tay thủ công & Tranh vẽ.",
+    mat3_name: "Thân cây sậy (Giấy sậy)",
+    mat3_trait: "Sợi thực vật dài, khung kết cấu vững",
+    mat3_desc: "Tạo khung liên kết bền bỉ, giữ form dáng cứng cáp cho Sổ tay và Bookmark.",
+    mat4_name: "Giấy Dó truyền thống",
+    mat4_trait: "Mỏng nhẹ, dẻo dai, xuyên sáng tốt",
+    mat4_desc:
+      "Chịu ẩm cao khi vẽ màu nước, ứng dụng cho Đèn lồng LED 4 mặt và Quạt giấy nghệ thuật.",
+    mat5_name: "Sợi cỏ & Phụ trợ xanh",
+    mat5_trait: "Tre, gỗ, dây thừng mộc, đèn LED",
+    mat5_desc:
+      "Nền tảng chất liệu mộc kết hợp khung nan tre, que gỗ, dây tua rua thân thiện môi trường.",
 
     // ── Story steps ────────────────────────────────────────────────────────────
-    step1_title: "Thu hoạch cỏ",
-    step1_desc: "Cỏ dại được thu gom tại địa phương — biến phế phẩm thành tài nguyên.",
-    step2_title: "Xử lý sợi",
+    step1_title: "Thu gom & Tuyển chọn xơ sợi",
+    step1_desc:
+      "Thu gom cỏ tự nhiên, lá dứa, bã mía, thân cây sậy bản địa; loại bỏ hoàn toàn nguyên liệu ẩm mốc trước khi đưa vào xử lý.",
+    step2_title: "Ủ mềm & Nghiền tơi cơ – sinh học",
     step2_desc:
-      "Cỏ được ngâm, xử lý thủ công để tách sợi tự nhiên, không sử dụng hóa chất công nghiệp.",
-    step3_title: "Tạo tờ giấy",
+      "Tách xơ tự nhiên bằng quy trình cơ – sinh học khép kín, tuyệt đối không dùng hóa chất tẩy trắng để giữ sắc độ mộc nguyên bản.",
+    step3_title: "Phối trộn tỷ lệ vàng & Ép nhiệt",
     step3_desc:
-      "Từng tờ giấy được đổ khuôn thủ công — mỗi tờ mang vân độc đáo như dấu tay của người nghệ nhân.",
-    step4_title: "Phơi & hoàn thiện",
+      "Phối trộn sợi cỏ cùng lá dứa (độ dai), bã mía (độ đanh) và sậy (khung kết cấu), sau đó đổ khuôn và ép nhiệt sinh học.",
+    step4_title: "Sấy khô & Gia công hoàn thiện",
     step4_desc:
-      "Giấy được phơi dưới ánh nắng tự nhiên, tạo nên màu sắc tự nhiên và texture độc đáo.",
+      "Sấy chuẩn hóa chống thấm lem với màu nước & acrylic; gia công cắt chuẩn kích thước, đóng gáy dây thừng và lắp khung gỗ/tre.",
 
     // ── Gallery ────────────────────────────────────────────────────────────────
     gallery_badge: "Hình ảnh thực tế",
@@ -141,17 +163,45 @@ export const translations = {
     gallery_label_5: "Texture giấy gốc",
 
     // ── Products ───────────────────────────────────────────────────────────────
-    products_badge: "Sản phẩm",
-    products_title_1: "Giấy & phụ kiện",
-    products_title_italic: "thủ công",
+    products_badge: "Danh mục sản phẩm",
+    products_title_1: "5 Dòng sản phẩm",
+    products_title_italic: "thủ công sinh thái",
     products_subtitle:
-      "Mỗi sản phẩm được làm tỉ mỉ bằng tay, không tờ nào giống tờ nào — đó là sự độc đáo của handmade.",
-    products_add_to_cart: "Thêm vào giỏ",
-    products_custom_badge: "Đặt hàng theo yêu cầu",
-    products_custom_title: "Tùy chỉnh kích thước, màu sắc & thiết kế",
+      "Chế tác từ giấy lá dứa, giấy mía, giấy sậy và giấy Dó — sẵn sàng để bạn sử dụng, làm quà tặng hoặc tự tay tô vẽ sáng tạo.",
+    products_add_to_cart: "Tìm hiểu & Đặt mua",
+    products_custom_badge: "Trải nghiệm & Cá nhân hóa",
+    products_custom_title: "Tự tay trang trí sản phẩm tại Workshop Mộc Xinh",
     products_custom_desc:
-      "Liên hệ để đặt hàng số lượng lớn hoặc theo yêu cầu riêng — chúng tôi sẽ tạo ra sản phẩm hoàn toàn phù hợp với bạn.",
-    products_custom_cta: "Đặt hàng tùy chỉnh",
+      "Tất cả 5 dòng sản phẩm đều có mặt tại buổi Workshop kèm đầy đủ màu nước Thiên Long, bút acrylic và phụ kiện để bạn thỏa sức sáng tạo.",
+    products_custom_cta: "Xem lịch Workshop",
+
+    // ── Workshop ───────────────────────────────────────────────────────────────
+    workshop_badge: "Sự kiện trải nghiệm",
+    workshop_title_1: "Workshop Mộc Xinh —",
+    workshop_title_italic: "Chạm xơ sợi tự nhiên,",
+    workshop_title_2: "khơi nguồn sáng tạo thủ công",
+    workshop_subtitle:
+      "Không chỉ lắng nghe hành trình tái sinh phụ phẩm nông nghiệp thành giấy mộc, bạn còn được trực tiếp chạm vào từng thớ giấy lá dứa, mía, sậy, giấy Dó và tự tay hoàn thiện tác phẩm mang dấu ấn cá nhân.",
+    workshop_date_label: "Thời gian tổ chức",
+    workshop_date_value: "18:15 – 21:00 | Ngày 07/10/2026",
+    workshop_location_label: "Địa điểm",
+    workshop_location_value: "600 Nguyễn Văn Cừ, P. An Bình, TP. Cần Thơ",
+    workshop_scale_label: "Quy mô phục vụ",
+    workshop_scale_value: "Giới hạn ~10 khách/buổi (Hỗ trợ 1-1 tại bàn)",
+    workshop_perks_title: "Quyền lợi dành cho người tham gia",
+    workshop_perk1:
+      "Tự chọn phôi sản phẩm thủ công (Tranh Đông Hồ A5, Sổ tay, Đèn lồng LED, Quạt giấy Dó, Bookmark).",
+    workshop_perk2:
+      "Chuẩn bị sẵn toàn bộ bộ màu nước Thiên Long, bút acrylic, cọ vẽ, keo, dây thừng & dây tua rua.",
+    workshop_perk3:
+      "Người hướng dẫn làm mẫu trực tiếp & nhân sự hỗ trợ kỹ thuật đi màu trên từng chất liệu giấy.",
+    workshop_perk4:
+      "Hỗ trợ sấy/làm khô hoàn thiện, đóng gói túi/hộp sinh thái chỉn chu và chụp ảnh check-in nghệ thuật.",
+    workshop_activities_title: "5 Hoạt động trải nghiệm tự chọn tại bàn",
+    workshop_timeline_title: "Lịch trình trải nghiệm (18:15 – 21:00)",
+    workshop_cta_primary: "Đăng ký tham gia Workshop ngay",
+    workshop_cta_secondary: "Nhắn tin Fanpage tư vấn",
+    workshop_cta_note: "Số lượng chỗ ngồi giới hạn ~10 người/buổi để đảm bảo trải nghiệm tốt nhất.",
 
     // ── Values ─────────────────────────────────────────────────────────────────
     values_badge: "Giá trị bền vững",
@@ -160,40 +210,40 @@ export const translations = {
     values_subtitle:
       "Chúng tôi không chỉ bán giấy — chúng tôi lan tỏa một cách sống xanh, gắn kết con người với thiên nhiên qua từng sản phẩm.",
     values_cta_banner_title: "Bắt đầu hành trình xanh cùng Mộc Xinh",
-    values_cta_banner_desc: "Một tờ giấy từ cỏ — một lựa chọn nhỏ vì môi trường lớn hơn.",
-    values_cta: "Liên hệ & Đặt hàng",
+    values_cta_banner_desc: "Một tờ giấy từ sợi thực vật — một lựa chọn nhỏ vì môi trường lớn hơn.",
+    values_cta: "Đăng ký Workshop & Đặt hàng",
 
     value1_title: "Thân thiện môi trường",
     value1_desc:
-      "Biến cỏ dại thành tài nguyên. Mỗi kg giấy Mộc Xinh giúp tận dụng phế phẩm nông nghiệp, giảm áp lực lên rừng nguyên sinh.",
+      "Tận dụng lá dứa, bã mía, cây sậy và cỏ tự nhiên. Quy trình cơ – sinh học khép kín không hóa chất tẩy trắng công nghiệp.",
     value1_stat: "0%",
-    value1_stat_label: "Hóa chất",
+    value1_stat_label: "Hóa chất tẩy",
     value2_title: "Nghệ thuật thủ công",
     value2_desc:
-      "Mỗi tờ giấy là kết tinh của đôi tay nghệ nhân — không hai tờ giống nhau. Texture hữu cơ tự nhiên, không thể tái tạo bằng máy.",
+      "Mỗi sản phẩm là kết tinh của đôi tay thủ công và nét vẽ cá nhân hóa — bám màu nước và acrylic bền đẹp, không lem nhòe.",
     value2_stat: "100%",
     value2_stat_label: "Thủ công",
-    value3_title: "Giảm lãng phí nông nghiệp",
+    value3_title: "Kinh tế tuần hoàn bản địa",
     value3_desc:
-      "Tận dụng nguồn cỏ dại từ vườn trái cây địa phương, góp phần kinh tế tuần hoàn và tạo thêm thu nhập cho nông dân địa phương.",
+      "Biến phụ phẩm nông nghiệp tại Đồng bằng sông Cửu Long thành sản phẩm văn hóa – sáng tạo có giá trị thẩm mỹ và ứng dụng cao.",
     value3_stat: "Bản địa",
-    value3_stat_label: "Nguồn gốc",
+    value3_stat_label: "Nguồn xơ sợi",
 
     testimonial1_text:
-      "Giấy Mộc Xinh có texture rất đặc biệt, mỗi tờ đều khác nhau — điều đó khiến mỗi thiệp tôi làm trở nên thực sự độc đáo.",
+      "Giấy lá dứa và giấy mía của Mộc Xinh có độ sần rất đặc biệt, khi tô màu nước Thiên Long và bút acrylic lên tranh Đông Hồ không hề bị lem hay rách giấy.",
     testimonial1_author: "Nguyễn Lan Anh",
-    testimonial1_role: "Nghệ sĩ Journaling",
+    testimonial1_role: "Khách tham gia Workshop",
     testimonial2_text:
-      "Tôi thích ý tưởng tái sử dụng cỏ dại. Sản phẩm đẹp, thân thiện môi trường và mang câu chuyện ý nghĩa.",
+      "Đèn lồng giấy Dó và sổ tay đóng gáy dây thừng rất chỉn chu. Trải nghiệm tự vẽ lên 4 mặt đèn và bật LED lên thực sự ấm cúng và ý nghĩa.",
     testimonial2_author: "Trần Minh Khôi",
-    testimonial2_role: "Nhà thiết kế",
+    testimonial2_role: "Nhà thiết kế trẻ",
 
     // ── Contact ────────────────────────────────────────────────────────────────
     contact_badge: "Liên hệ với chúng tôi",
     contact_title_1: "Kết nối cùng",
     contact_title_italic: "Mộc Xinh",
     contact_subtitle:
-      "Đặt hàng, hợp tác hoặc chỉ đơn giản là muốn biết thêm về giấy cỏ — chúng tôi luôn sẵn sàng lắng nghe.",
+      "Đặt mua sản phẩm, đăng ký tham gia Workshop hoặc hợp tác cùng Mộc Xinh — chúng tôi luôn sẵn sàng lắng nghe.",
     contact_form_name: "Họ và tên",
     contact_form_email: "Email",
     contact_form_subject: "Chủ đề",
@@ -209,10 +259,10 @@ export const translations = {
 
     // ── Footer ─────────────────────────────────────────────────────────────────
     footer_tagline:
-      "Sống xanh bắt đầu từ những lựa chọn nhỏ — một tờ giấy, một lời nhắn, một hành trình tái sinh cùng thiên nhiên.",
+      "Sống xanh bắt đầu từ những lựa chọn nhỏ — một tấm giấy thực vật, một buổi workshop sáng tạo, một hành trình tái sinh cùng thiên nhiên.",
     footer_contact_title: "Liên hệ",
     footer_nav_title: "Điều hướng",
-    footer_copyright: "Giấy thủ công — Tái sinh từ thiên nhiên.",
+    footer_copyright: "Giấy thủ công từ sợi thực vật — Tái sinh từ thiên nhiên.",
     footer_made: "Made with 🌿 tại Cần Thơ, Việt Nam",
   },
 
@@ -220,39 +270,40 @@ export const translations = {
     // ── Nav ────────────────────────────────────────────────────────────────────
     nav_about: "About",
     nav_team: "Team",
-    nav_story: "Our Story",
+    nav_story: "Materials & Process",
     nav_products: "Products",
+    nav_workshop: "Workshop",
     nav_values: "Our Values",
     nav_contact: "Contact",
-    nav_contact_btn: "Contact",
-    nav_contact_mobile: "Get in Touch",
+    nav_contact_btn: "Join Workshop",
+    nav_contact_mobile: "Register for Workshop",
 
     // ── About ──────────────────────────────────────────────────────────────────
     about_badge: "About the Project",
     about_title_1: "Mộc Xinh —",
-    about_title_italic: "Born from Wild Grass",
+    about_title_italic: "Born from Plant Fibers",
     about_subtitle:
-      "A student startup with a passion to transform nature's simplest elements into meaningful products, spreading a sustainable green lifestyle.",
+      "An eco-craft handmade paper brand utilizing wild grass and local agricultural byproducts (pineapple leaf, bagasse, reed, and Do paper) to spread a sustainable green lifestyle.",
     about_desc_1:
-      "Mộc Xinh was founded in 2026 by a group of students from FPT University Cần Thơ — people who believe that wild grass can become beautiful, eco-friendly art paper.",
+      "Founded in 2026 at FPT University Cần Thơ, Mộc Xinh transforms fiber-rich local plant byproducts into unique, unbleached handmade paper sheets through a closed bio-mechanical process.",
     about_desc_2:
-      "We don't just make paper — we craft a story: turning agricultural waste into creative products, contributing to a circular economy and raising environmental awareness in the community.",
+      "Beyond eco-friendly handcrafted products, Mộc Xinh hosts hands-on creative Workshops where participants feel natural plant textures and personalize their own crafts.",
     about_mission_label: "Mission",
-    about_mission: "Rebirth of nature through every handcrafted sheet of paper",
+    about_mission: "Rebirthing agricultural plant fibers through handmade paper & workshops",
     about_vision_label: "Vision",
     about_vision: "To become the leading green handmade paper brand in the Mekong Delta",
     about_founded_label: "Founded",
     about_founded: "2026",
     about_location_label: "Location",
-    about_location: "Cần Thơ, Vietnam",
+    about_location: "600 Nguyen Van Cu, An Binh, Can Tho",
     about_university_label: "University",
     about_university: "FPT University Cần Thơ",
     about_stat1_value: "100%",
     about_stat1_label: "Handmade",
     about_stat2_value: "0%",
-    about_stat2_label: "Chemicals",
-    about_stat3_value: "6",
-    about_stat3_label: "Members",
+    about_stat2_label: "Bleach",
+    about_stat3_value: "5+",
+    about_stat3_label: "Plant Fibers",
     about_stat4_value: "2026",
     about_stat4_label: "Founded",
 
@@ -262,37 +313,37 @@ export const translations = {
     team_title_italic: "created Mộc Xinh",
     team_subtitle:
       "6 students with a passion for creativity and innovation — together turning a green dream into reality.",
-    team_member1_name: "Nguyễn Văn An",
+    team_member1_name: "Lê Mỹ Trà Giang",
     team_member1_title: "CEO",
     team_member1_role: "Chief Executive Officer",
     team_member1_role_vi: "Giám đốc Điều hành",
     team_member1_desc:
       "Manages the entire project; assigns tasks; tracks progress; liaises with lecturers/partners; builds brand direction and development strategy.",
-    team_member2_name: "Trần Thị Bích",
+    team_member2_name: "Nguyễn Kim Bảo Nguyên",
     team_member2_title: "COO",
     team_member2_role: "Chief Operating Officer",
     team_member2_role_vi: "Giám đốc Vận hành",
     team_member2_desc:
       "Manages the paper production process; monitors materials and product quality; optimizes workflows; supports MVP operations.",
-    team_member3_name: "Lê Minh Châu",
+    team_member3_name: "Lê Nhựt Huy",
     team_member3_title: "CMO",
     team_member3_role: "Chief Marketing Officer",
     team_member3_role_vi: "Giám đốc Marketing",
     team_member3_desc:
       "Conducts market research; builds marketing strategy; manages social media; finds customers and partners; supports sales and product promotion.",
-    team_member4_name: "Phạm Thị Dung",
+    team_member4_name: "Nguyễn Trung Nguyên",
     team_member4_title: "CTO",
     team_member4_role: "Chief Technology Officer",
     team_member4_role_vi: "Giám đốc Công nghệ",
     team_member4_desc:
       "Builds the website/landing page; manages technology and data; supports digital tools for business operations and promotion.",
-    team_member5_name: "Hoàng Văn Em",
+    team_member5_name: "Trần Khôi Nguyên",
     team_member5_title: "CFO",
     team_member5_role: "Chief Financial Officer",
     team_member5_role_vi: "Giám đốc Tài chính",
     team_member5_desc:
       "Tracks production costs; plans budgets; calculates product pricing; manages finances and supports revenue–profit reporting.",
-    team_member6_name: "Ngô Thị Phương",
+    team_member6_name: "Trương Trọng Tường Vy",
     team_member6_title: "CPO",
     team_member6_role: "Chief Product Officer",
     team_member6_role_vi: "Giám đốc Sản phẩm",
@@ -300,43 +351,65 @@ export const translations = {
       "Designs logo, packaging and brand identity; designs paper patterns and handmade products; builds product visual identity.",
 
     // ── Hero ───────────────────────────────────────────────────────────────────
-    hero_badge: "Natural Grass Paper",
+    hero_badge: "Plant-Fiber Handmade Paper",
     hero_tagline: "Reborn from Nature",
     hero_description:
-      "Handcrafted paper from wild grass and natural fibers — a journey transforming the rustic elements of nature into friendly and familiar sheets of paper.",
-    hero_cta_primary: "Explore Our Story",
-    hero_cta_secondary: "View Products",
+      "Crafted from wild grass, pineapple leaf, sugarcane bagasse, reed fibers, and traditional Do paper — preserving organic textures for sustainable art and craft.",
+    hero_cta_primary: "Join Workshop",
+    hero_cta_secondary: "Explore Products",
     hero_scroll: "Scroll",
-    hero_stat_natural: "Natural",
-    hero_stat_eco: "Eco-friendly",
-    hero_stat_origin: "Origin",
+    hero_stat_natural: "Plant Fibers",
+    hero_stat_eco: "Unbleached",
+    hero_stat_origin: "Can Tho",
 
-    // ── Story ──────────────────────────────────────────────────────────────────
-    story_badge: "The Mộc Xinh Journey",
-    story_title_1: "From wild",
-    story_title_italic: "grasslands",
-    story_title_2: "to artistic paper",
+    // ── Story & Materials ──────────────────────────────────────────────────────
+    story_badge: "Materials & Eco-Craft Process",
+    story_title_1: "From local agricultural",
+    story_title_italic: "byproducts",
+    story_title_2: "to unique botanical paper",
     story_subtitle:
-      "Mộc Xinh was born from a simple question: what if wild grass — something people usually discard — could be given a new life?",
-    story_quote: '"Every sheet of paper is a story from nature"',
-    story_eco_title: "Circular Economy",
+      "Through 4 R&D MVP iterations, Mộc Xinh perfected a closed bio-mechanical process blending grass fibers with pineapple leaf, bagasse, reed, and Do paper without industrial bleach.",
+    story_quote: '"Every sheet carries the living fiber texture of nature"',
+    story_eco_title: "3-Stage Quality Control",
     story_eco_desc:
-      "Wild grass from local gardens is collected and reborn, minimizing agricultural waste.",
-    story_texture_label: "Real textures — photographed directly from products",
+      "Clean mold-free raw materials (Input) → Standardized sizing & structural durability (In-Process) → Watercolor & acrylic colorfast testing before delivery (Output).",
+    story_texture_label: "Botanical Fibers & Eco-Friendly Materials",
+    materials_heading: "5 Core Botanical Materials",
+    materials_subheading:
+      "Our golden-ratio fiber blend ensures superior durability and color retention with watercolor and acrylic pens without bleeding or tearing.",
+    mat1_name: "Pineapple Leaf Paper",
+    mat1_trait: "Thick, textured grain, high tensile strength",
+    mat1_desc:
+      "Provides strong durability and rich surface grain for Dong Ho A5 Paintings & Bookmarks.",
+    mat2_name: "Sugarcane Bagasse Paper",
+    mat2_trait: "Firm fibers, sturdy & substantial feel",
+    mat2_desc:
+      "Enhances mechanical stiffness and flatness for Handmade Notebook covers/pages & Artworks.",
+    mat3_name: "Reed Fiber Paper",
+    mat3_trait: "Long plant fibers, solid structural frame",
+    mat3_desc: "Creates a resilient structural matrix for crisp Notebooks and Bookmarks.",
+    mat4_name: "Traditional Do Paper",
+    mat4_trait: "Lightweight, supple, warm light diffusion",
+    mat4_desc:
+      "Highly moisture-resistant for watercoloring; used in 4-sided LED Lanterns and Art Fans.",
+    mat5_name: "Wild Grass & Eco Accents",
+    mat5_trait: "Bamboo ribs, wood frames, hemp twine, LED",
+    mat5_desc:
+      "Organic grass base paired with natural bamboo frames, wooden rods, and rustic twine.",
 
     // ── Story steps ────────────────────────────────────────────────────────────
-    step1_title: "Grass Harvesting",
+    step1_title: "Fiber Harvesting & Sorting",
     step1_desc:
-      "Wild grass is collected from local fruit orchards — turning agricultural waste into a valuable resource.",
-    step2_title: "Fiber Processing",
+      "Collecting local wild grass, pineapple leaves, sugarcane bagasse, and reeds; strictly removing any moldy or defective raw materials.",
+    step2_title: "Bio-Mechanical Pulping",
     step2_desc:
-      "Grass is soaked and manually processed to extract natural fibers, without industrial chemicals.",
-    step3_title: "Sheet Forming",
+      "Softening and separating fibers naturally without industrial bleaching chemicals to retain authentic botanical hues.",
+    step3_title: "Golden-Ratio Blending & Bio-Heat Pressing",
     step3_desc:
-      "Each sheet is hand-poured into molds — every page carries a unique texture like the fingerprint of an artisan.",
-    step4_title: "Drying & Finishing",
+      "Blending grass with pineapple leaf (strength), bagasse (stiffness), and reed (structure), followed by hand-molding and bio-thermal pressing.",
+    step4_title: "Drying & Craft Finishing",
     step4_desc:
-      "Paper is naturally sun-dried under the sun, creating its unique natural color and texture.",
+      "Controlled drying for watercolor/acrylic resistance; precision cutting, hemp-twine binding, and wood/bamboo frame assembly.",
 
     // ── Gallery ────────────────────────────────────────────────────────────────
     gallery_badge: "Real Product Photos",
@@ -353,59 +426,87 @@ export const translations = {
     gallery_label_5: "Original Paper Texture",
 
     // ── Products ───────────────────────────────────────────────────────────────
-    products_badge: "Products",
-    products_title_1: "Paper & handmade",
-    products_title_italic: "accessories",
+    products_badge: "Product Catalog",
+    products_title_1: "5 Eco-Handcrafted",
+    products_title_italic: "product lines",
     products_subtitle:
-      "Each product is meticulously handmade — no two are alike, that's the beauty of handcraft.",
-    products_add_to_cart: "Add to Cart",
-    products_custom_badge: "Custom Orders",
-    products_custom_title: "Customize size, color & design",
+      "Crafted from pineapple leaf, bagasse, reed, and Do paper — ready for everyday use, meaningful gifting, or DIY artistic painting.",
+    products_add_to_cart: "Inquire & Order",
+    products_custom_badge: "Hands-on Personalization",
+    products_custom_title: "Paint & personalize your own craft at Mộc Xinh Workshop",
     products_custom_desc:
-      "Contact us for bulk orders or custom requests — we'll create a product perfectly tailored for you.",
-    products_custom_cta: "Place Custom Order",
+      "All 5 product lines are available at our Workshop with Thien Long watercolors, acrylic markers, and rustic accessories included.",
+    products_custom_cta: "Explore Workshop",
+
+    // ── Workshop ───────────────────────────────────────────────────────────────
+    workshop_badge: "Hands-on Experience",
+    workshop_title_1: "Mộc Xinh Workshop —",
+    workshop_title_italic: "Touch natural fibers,",
+    workshop_title_2: "spark handmade creativity",
+    workshop_subtitle:
+      "Discover how agricultural byproducts are reborn into botanical paper, feel the authentic textures of pineapple leaf, bagasse, reed, and Do paper, and craft your own personalized keepsake.",
+    workshop_date_label: "Date & Time",
+    workshop_date_value: "18:15 – 21:00 | October 07, 2026",
+    workshop_location_label: "Venue",
+    workshop_location_value: "600 Nguyen Van Cu, An Binh, Can Tho City",
+    workshop_scale_label: "Capacity",
+    workshop_scale_value: "Limited to ~10 guests/session (Dedicated table support)",
+    workshop_perks_title: "What's Included in Your Ticket",
+    workshop_perk1:
+      "Choice of 1 handcrafted base product (Dong Ho A5 Painting, Notebook, Do Paper LED Lantern, Bamboo Fan, or Bookmark).",
+    workshop_perk2:
+      "Full creative toolkit at your table: Thien Long watercolors, acrylic pens, brushes, glue, hemp twine & tassels.",
+    workshop_perk3:
+      "Live demonstration by our instructor & 1-on-1 table guidance for painting on botanical paper.",
+    workshop_perk4:
+      "On-site drying assistance, eco-friendly gift box/bag packaging, and photo check-in corner.",
+    workshop_activities_title: "5 DIY Craft Experiences to Choose From",
+    workshop_timeline_title: "Workshop Schedule (18:15 – 21:00)",
+    workshop_cta_primary: "Register for Workshop Now",
+    workshop_cta_secondary: "Message Fanpage for Info",
+    workshop_cta_note: "Limited to ~10 seats per session to ensure a cozy, guided experience.",
 
     // ── Values ─────────────────────────────────────────────────────────────────
     values_badge: "Sustainable Values",
     values_title_1: "Why choose",
     values_title_italic: "Mộc Xinh?",
     values_subtitle:
-      "We don't just sell paper — we spread a green lifestyle, connecting people with nature through every product.",
+      "We don't just craft paper — we spread a green lifestyle, connecting people with nature through every botanical fiber.",
     values_cta_banner_title: "Start your green journey with Mộc Xinh",
-    values_cta_banner_desc: "A sheet of grass paper — a small choice for a bigger environment.",
-    values_cta: "Contact & Order",
+    values_cta_banner_desc: "A sheet of botanical paper — a small choice for a greener planet.",
+    values_cta: "Join Workshop & Order",
 
-    value1_title: "Eco-Friendly",
+    value1_title: "Eco-Friendly & Unbleached",
     value1_desc:
-      "Turning wild grass into a resource. Every kg of Mộc Xinh paper helps utilize agricultural waste, reducing pressure on natural forests.",
+      "Upcycling pineapple leaves, bagasse, reeds, and wild grass via a closed bio-mechanical process with zero industrial bleach.",
     value1_stat: "0%",
-    value1_stat_label: "Chemicals",
-    value2_title: "Handcraft Art",
+    value1_stat_label: "Bleach",
+    value2_title: "Handcrafted & Colorfast",
     value2_desc:
-      "Each sheet of paper is the result of an artisan's hands — no two are alike. Organic texture that can't be replicated by machines.",
+      "Engineered to hold watercolor and acrylic vibrantly without bleeding or tearing — making every handmade piece one-of-a-kind.",
     value2_stat: "100%",
     value2_stat_label: "Handmade",
-    value3_title: "Reducing Agricultural Waste",
+    value3_title: "Local Circular Economy",
     value3_desc:
-      "Utilizing wild grass from local orchards, contributing to a circular economy and additional income for local farmers.",
+      "Transforming Mekong Delta agricultural byproducts into cultural, artistic, and functional eco-products.",
     value3_stat: "Local",
-    value3_stat_label: "Delta Origin",
+    value3_stat_label: "Plant Fibers",
 
     testimonial1_text:
-      "Mộc Xinh paper has a very special texture, each sheet is different — that makes every card I create truly unique.",
+      "Mộc Xinh's pineapple leaf and bagasse paper has such a unique grain. Painting the Dong Ho A5 artwork with watercolors and acrylics was smooth with zero bleeding.",
     testimonial1_author: "Lan Anh Nguyen",
-    testimonial1_role: "Journaling Artist",
+    testimonial1_role: "Workshop Participant",
     testimonial2_text:
-      "I love the idea of reusing wild grass. Beautiful product, eco-friendly and carrying a meaningful story.",
+      "The Do paper LED lantern and hemp-bound notebook are wonderfully crafted. Painting all 4 sides and lighting it up at the workshop felt magical.",
     testimonial2_author: "Minh Khoi Tran",
-    testimonial2_role: "Designer",
+    testimonial2_role: "Young Designer",
 
     // ── Contact ────────────────────────────────────────────────────────────────
     contact_badge: "Get in Touch",
     contact_title_1: "Connect with",
     contact_title_italic: "Mộc Xinh",
     contact_subtitle:
-      "Order, collaborate, or simply learn more about grass paper — we're always ready to listen.",
+      "Order products, register for our upcoming Workshop, or collaborate with Mộc Xinh — we're always happy to hear from you.",
     contact_form_name: "Full Name",
     contact_form_email: "Email Address",
     contact_form_subject: "Subject",
@@ -421,10 +522,10 @@ export const translations = {
 
     // ── Footer ─────────────────────────────────────────────────────────────────
     footer_tagline:
-      "Living green starts with small choices — a sheet of paper, a handwritten note, a journey of rebirth with nature.",
+      "Living green starts with small choices — a botanical sheet of paper, a creative workshop, a journey of rebirth with nature.",
     footer_contact_title: "Contact",
     footer_nav_title: "Navigation",
-    footer_copyright: "Handcrafted paper — Reborn from Nature.",
+    footer_copyright: "Botanical handmade paper — Reborn from Nature.",
     footer_made: "Made with 🌿 in Cần Thơ, Vietnam",
   },
 } as const;
