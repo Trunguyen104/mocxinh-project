@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Mascot } from "page-mascot";
 import { useApp } from "@/contexts/AppContext";
 import { Button } from "@/components/ui/Button";
 
@@ -214,14 +215,16 @@ export function HeroSection() {
             <span className="text-[8px] uppercase tracking-wider text-white/70">Eco</span>
           </div>
 
-          {/* Floating mini image */}
-          <div className="absolute -right-4 top-12 hidden overflow-hidden rounded-2xl shadow-card ring-4 ring-cream animate-float-slow dark:ring-[var(--background)] lg:block">
-            <Image
-              src="/images/mascot.png"
-              alt="Cỏ tự nhiên nguyên liệu"
-              width={140}
-              height={170}
-              className="h-40 w-32 object-cover"
+          {/* Interactive Cursor-Tracking Mascot */}
+          <div
+            title="Nhấn vào linh vật Mộc Xinh!"
+            className="absolute -right-3 top-6 z-20 overflow-hidden rounded-3xl bg-ivory/90 p-1.5 shadow-card ring-4 ring-cream backdrop-blur-sm transition-transform duration-300 hover:scale-105 dark:bg-[var(--surface)]/90 dark:ring-[var(--background)] sm:-right-5 sm:top-10"
+          >
+            <Mascot
+              directions="/mascots/mocxinh-directions.webp"
+              reactions="/mascots/mocxinh-reactions.webp"
+              size={200}
+              label="Linh vật Mộc Xinh"
             />
           </div>
 
