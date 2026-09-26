@@ -23,6 +23,13 @@ interface AppContextValue {
   lang: Lang;
   setLang: (l: Lang) => void;
   t: (key: TranslationKey) => string;
+  isTourActive: boolean;
+  tourStep: number;
+  isTourMinimized: boolean;
+  startWorkshopTour: (step?: number) => void;
+  setTourStep: (step: number) => void;
+  toggleTourMinimized: () => void;
+  closeTour: () => void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -30,6 +37,9 @@ const AppContext = createContext<AppContextValue | null>(null);
 export function AppProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("light");
   const [lang, setLangState] = useState<Lang>("vi");
+  const [isTourActive, setIsTourActive] = useState(false);
+  const [tourStep, setTourStep] = useState(0);
+  const [isTourMinimized, setIsTourMinimized] = useState(false);
 
   // Hydrate persisted preferences once on mount to avoid SSR/client hydration mismatch
   useEffect(() => {
@@ -71,6 +81,34 @@ export function AppProvider({ children }: { children: ReactNode }) {
     [lang],
   );
 
+  const startWorkshopTour = useCallback((step = 0) => {
+    setIsTourActive(true);
+    setIsTourMinimized(false);
+    setTourStep(step);
+
+    const targetId =
+      step === 1
+        ? "workshop-activities"
+        : step === 2
+          ? "workshop-timeline"
+          : step === 3
+            ? "workshop-cta"
+            : "workshop";
+
+    const target = document.getElementById(targetId) || document.getElementById("workshop");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
+  const closeTour = useCallback(() => {
+    setIsTourActive(false);
+  }, []);
+
+  const toggleTourMinimized = useCallback(() => {
+    setIsTourMinimized((prev) => !prev);
+  }, []);
+
   const contextValue = useMemo<AppContextValue>(
     () => ({
       theme,
@@ -79,8 +117,28 @@ export function AppProvider({ children }: { children: ReactNode }) {
       lang,
       setLang,
       t,
+      isTourActive,
+      tourStep,
+      isTourMinimized,
+      startWorkshopTour,
+      setTourStep,
+      toggleTourMinimized,
+      closeTour,
     }),
-    [theme, toggleTheme, lang, setLang, t],
+    [
+      theme,
+      toggleTheme,
+      lang,
+      setLang,
+      t,
+      isTourActive,
+      tourStep,
+      isTourMinimized,
+      startWorkshopTour,
+      setTourStep,
+      toggleTourMinimized,
+      closeTour,
+    ],
   );
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

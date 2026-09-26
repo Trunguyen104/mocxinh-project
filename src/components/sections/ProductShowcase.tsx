@@ -97,7 +97,7 @@ const PRODUCTS_DATA = [
 ];
 
 export function ProductShowcase() {
-  const { t, lang } = useApp();
+  const { t, lang, startWorkshopTour } = useApp();
   const sectionRef = useRef<HTMLElement>(null);
   const headRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -265,10 +265,11 @@ export function ProductShowcase() {
                   {t("products_custom_desc")}
                 </p>
               </div>
-              <a
-                href="#workshop"
+              <button
+                type="button"
+                onClick={() => startWorkshopTour(1)}
                 id="custom-order-btn"
-                className="inline-flex items-center gap-2 rounded-full border border-ivory/30 bg-ivory/10 px-7 py-3.5 text-sm font-medium text-ivory transition-all duration-500 hover:border-ivory/60 hover:bg-ivory/20 whitespace-nowrap"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-ivory/30 bg-ivory/10 px-7 py-3.5 text-sm font-medium text-ivory transition-all duration-500 hover:border-ivory/60 hover:bg-ivory/20 whitespace-nowrap"
               >
                 {t("products_custom_cta")}
                 <svg
@@ -280,7 +281,7 @@ export function ProductShowcase() {
                 >
                   <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
         </div>

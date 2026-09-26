@@ -9,7 +9,7 @@ import { BRAND } from "@/lib/constants";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { t } = useApp();
+  const { t, startWorkshopTour } = useApp();
 
   const NAV_LINKS = [
     { href: "#about", label: t("nav_about") },
@@ -62,6 +62,12 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => {
+                if (link.href === "#workshop") {
+                  e.preventDefault();
+                  startWorkshopTour(0);
+                }
+              }}
               className="relative text-sm text-olive-dark/80 transition-colors duration-300 hover:text-kraft-dark after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-0 after:bg-kraft after:transition-all after:duration-300 hover:after:w-full dark:text-olive-dark/90 dark:hover:text-kraft-dark"
             >
               {link.label}
@@ -73,12 +79,13 @@ export function Header() {
         <div className="hidden flex-1 items-center justify-end gap-2.5 md:flex">
           <LangToggle />
           <ThemeToggle />
-          <a
-            href="#workshop"
-            className="ml-1 rounded-full border border-moc-green/40 bg-moc-green/8 px-5 py-2 text-xs font-medium uppercase tracking-[0.12em] text-moc-green-dark transition-all duration-500 hover:bg-moc-green hover:text-white hover:border-moc-green hover:shadow-soft dark:border-moc-green/30 dark:bg-moc-green/6 dark:text-moc-green-light dark:hover:bg-moc-green dark:hover:text-white whitespace-nowrap"
+          <button
+            type="button"
+            onClick={() => startWorkshopTour(0)}
+            className="ml-1 cursor-pointer rounded-full border border-moc-green/40 bg-moc-green/8 px-5 py-2 text-xs font-medium uppercase tracking-[0.12em] text-moc-green-dark transition-all duration-500 hover:bg-moc-green hover:text-white hover:border-moc-green hover:shadow-soft dark:border-moc-green/30 dark:bg-moc-green/6 dark:text-moc-green-light dark:hover:bg-moc-green dark:hover:text-white whitespace-nowrap"
           >
             {t("nav_contact_btn")}
-          </a>
+          </button>
         </div>
 
         {/* ── Mobile controls + Hamburger ─────────────────────────────────── */}
@@ -123,7 +130,13 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setMobileOpen(false)}
+              onClick={(e) => {
+                setMobileOpen(false);
+                if (link.href === "#workshop") {
+                  e.preventDefault();
+                  startWorkshopTour(0);
+                }
+              }}
               className="border-b border-kraft/8 py-3.5 text-sm text-olive-dark transition-colors hover:text-kraft-dark dark:border-kraft/6 dark:text-olive-dark dark:hover:text-kraft-dark"
             >
               {link.label}
@@ -133,13 +146,16 @@ export function Header() {
           {/* Mobile bottom actions */}
           <div className="mt-3 flex items-center gap-3">
             <LangToggle />
-            <a
-              href="#workshop"
-              onClick={() => setMobileOpen(false)}
-              className="flex-1 rounded-full bg-olive/15 py-3 text-center text-sm font-medium text-olive-dark transition-colors hover:bg-olive/25 dark:bg-olive/10 dark:text-olive-dark"
+            <button
+              type="button"
+              onClick={() => {
+                setMobileOpen(false);
+                startWorkshopTour(0);
+              }}
+              className="flex-1 cursor-pointer rounded-full bg-olive/15 py-3 text-center text-sm font-medium text-olive-dark transition-colors hover:bg-olive/25 dark:bg-olive/10 dark:text-olive-dark"
             >
               {t("nav_contact_mobile")}
-            </a>
+            </button>
           </div>
         </nav>
       </div>

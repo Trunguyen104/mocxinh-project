@@ -203,6 +203,30 @@ export const translations = {
     workshop_cta_secondary: "Nhắn tin Fanpage tư vấn",
     workshop_cta_note: "Số lượng chỗ ngồi giới hạn ~10 người/buổi để đảm bảo trải nghiệm tốt nhất.",
 
+    // ── Workshop Mascot Tour Guide ─────────────────────────────────────────────
+    tour_badge: "Hướng dẫn viên Mộc Xinh",
+    tour_step1_title: "Khám phá Workshop Mộc Xinh",
+    tour_step1_desc:
+      "Chào bạn! Buổi Workshop diễn ra vào 18:15 – 21:00 ngày 07/10/2026 tại 600 Nguyễn Văn Cừ, Cần Thơ. Quy mô giới hạn ~10 khách để được hỗ trợ 1-1 tận tình nhất!",
+    tour_step1_btn: "Khám phá 5 hoạt động DIY 🎨",
+    tour_step2_title: "5 Hoạt động DIY từ sợi thực vật",
+    tour_step2_desc:
+      "Bạn sẽ được tự tay làm Tranh Đông Hồ A5, Sổ tay dây thừng, Đèn lồng Dó LED, Quạt giấy Dó và Bookmark từ xơ sợi lá dứa, mía, sậy tự nhiên!",
+    tour_step2_btn: "Xem lịch trình trải nghiệm ⏰",
+    tour_step3_title: "Lịch trình trải nghiệm (18:15 – 21:00)",
+    tour_step3_desc:
+      "Trọn vẹn từ đón khách, nghe câu chuyện tái sinh giấy, thực hành vẽ với người hướng dẫn, đến sấy khô và đóng gói quà tặng sinh thái mang về!",
+    tour_step3_btn: "Đăng ký tham gia ngay 👇",
+    tour_step4_title: "Giữ chỗ tham gia ngay!",
+    tour_step4_desc:
+      "Số lượng chỗ ngồi chỉ ~10 người mỗi buổi. Nhấn nút xanh bên dưới để mở form đăng ký giữ chỗ cùng Mộc Xinh nhé!",
+    tour_step4_btn: "Đăng ký Workshop ngay 🌿",
+    tour_minimize: "Thu gọn",
+    tour_expand: "Mascot hướng dẫn",
+    tour_close: "Đóng hướng dẫn",
+    tour_mascot_hint: "Nhấn vào mình để đi tour Workshop nhé! 🌿",
+    tour_step_counter: "Bước",
+
     // ── Values ─────────────────────────────────────────────────────────────────
     values_badge: "Giá trị bền vững",
     values_title_1: "Vì sao chọn",
@@ -465,6 +489,30 @@ export const translations = {
     workshop_cta_primary: "Register for Workshop Now",
     workshop_cta_secondary: "Message Fanpage for Info",
     workshop_cta_note: "Limited to ~10 seats per session to ensure a cozy, guided experience.",
+
+    // ── Workshop Mascot Tour Guide ─────────────────────────────────────────────
+    tour_badge: "Mộc Xinh Mascot Guide",
+    tour_step1_title: "Discover Mộc Xinh Workshop",
+    tour_step1_desc:
+      "Welcome! The Workshop takes place from 18:15 to 21:00 on Oct 7, 2026 at 600 Nguyen Van Cu, Can Tho. Limited to ~10 guests for dedicated 1-on-1 support!",
+    tour_step1_btn: "Explore 5 DIY Activities 🎨",
+    tour_step2_title: "5 Botanical DIY Activities",
+    tour_step2_desc:
+      "Craft your own Dong Ho painting, rustic notebook, Do LED lantern, bamboo fan, and bookmarks from natural plant fibers!",
+    tour_step2_btn: "See Evening Schedule ⏰",
+    tour_step3_title: "Evening Schedule (18:15 – 21:00)",
+    tour_step3_desc:
+      "From welcome check-in, eco-paper story, hands-on crafting with live guidance, to drying and eco-packaging to take home!",
+    tour_step3_btn: "Go to Registration 👇",
+    tour_step4_title: "Reserve Your Seat Now!",
+    tour_step4_desc:
+      "Only ~10 spots available per session. Click the green button below to fill out the form and secure your seat with Mộc Xinh!",
+    tour_step4_btn: "Register for Workshop Now 🌿",
+    tour_minimize: "Minimize",
+    tour_expand: "Mascot Guide",
+    tour_close: "Close Guide",
+    tour_mascot_hint: "Click me to take a tour of the Workshop! 🌿",
+    tour_step_counter: "Step",
 
     // ── Values ─────────────────────────────────────────────────────────────────
     values_badge: "Sustainable Values",

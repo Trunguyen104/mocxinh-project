@@ -280,7 +280,10 @@ export function WorkshopSection() {
           </div>
 
           {/* Right: 5 DIY Activities */}
-          <div className="workshop-card flex flex-col justify-between rounded-3xl border border-kraft/15 bg-cream/90 p-7 shadow-card backdrop-blur-sm dark:border-kraft/8 dark:bg-[var(--surface)] lg:col-span-7">
+          <div
+            id="workshop-activities"
+            className="workshop-card flex flex-col justify-between rounded-3xl border border-kraft/15 bg-cream/90 p-7 shadow-card backdrop-blur-sm dark:border-kraft/8 dark:bg-[var(--surface)] lg:col-span-7"
+          >
             <div>
               <h3 className="mb-5 font-display text-2xl text-kraft-dark dark:text-kraft-dark">
                 {t("workshop_activities_title")}
@@ -331,6 +334,7 @@ export function WorkshopSection() {
 
         {/* ── Workshop Timeline ───────────────────────────────────────────── */}
         <div
+          id="workshop-timeline"
           ref={timelineRef}
           className="mt-16 rounded-3xl border border-kraft/15 bg-ivory/60 p-8 shadow-soft backdrop-blur-sm dark:border-kraft/8 dark:bg-[var(--surface)]/70 lg:p-10"
         >
@@ -362,6 +366,7 @@ export function WorkshopSection() {
 
         {/* ── Registration CTA Banner with Link ───────────────────────────── */}
         <div
+          id="workshop-cta"
           ref={ctaRef}
           className="mt-14 overflow-hidden rounded-3xl bg-gradient-to-br from-kraft-dark via-olive-dark to-kraft-dark p-8 text-center shadow-paper md:p-12"
         >

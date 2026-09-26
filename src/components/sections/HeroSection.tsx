@@ -19,7 +19,7 @@ const LEAVES = [
 ];
 
 export function HeroSection() {
-  const { t } = useApp();
+  const { t, startWorkshopTour } = useApp();
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
@@ -146,13 +146,7 @@ export function HeroSection() {
           </p>
 
           <div ref={ctaRef} className="mt-10 flex flex-wrap items-center gap-4">
-            <Button
-              onClick={() =>
-                document.getElementById("workshop")?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              {t("hero_cta_primary")}
-            </Button>
+            <Button onClick={() => startWorkshopTour(0)}>{t("hero_cta_primary")}</Button>
             <a
               href="#products"
               id="hero-products-link"
@@ -217,8 +211,9 @@ export function HeroSection() {
 
           {/* Interactive Cursor-Tracking Mascot */}
           <div
-            title="Nhấn vào linh vật Mộc Xinh!"
-            className="absolute -right-3 top-6 z-20 overflow-hidden rounded-3xl bg-ivory/90 p-1.5 shadow-card ring-4 ring-cream backdrop-blur-sm transition-transform duration-300 hover:scale-105 dark:bg-[var(--surface)]/90 dark:ring-[var(--background)] sm:-right-5 sm:top-10"
+            title="Nhấn vào linh vật Mộc Xinh để cùng đi tour Workshop! 🌿"
+            onClick={() => startWorkshopTour(0)}
+            className="cursor-pointer absolute -right-3 top-6 z-20 overflow-hidden rounded-3xl bg-ivory/90 p-1.5 shadow-card ring-4 ring-cream backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:ring-moc-green/50 dark:bg-[var(--surface)]/90 dark:ring-[var(--background)] sm:-right-5 sm:top-10"
           >
             <Mascot
               directions="/mascots/mocxinh-directions.webp"

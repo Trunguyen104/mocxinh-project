@@ -8,6 +8,7 @@ import { ProductShowcase } from "@/components/sections/ProductShowcase";
 import { WorkshopSection } from "@/components/sections/WorkshopSection";
 import { CoreValuesSection } from "@/components/sections/CoreValuesSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { WorkshopMascotGuide } from "@/components/workshop/WorkshopMascotGuide";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
         <CoreValuesSection />
         <ContactSection />
       </main>
+      <WorkshopMascotGuide />
       <Footer />
     </>
   );
