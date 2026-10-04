@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useApp } from "@/contexts/AppContext";
-import { FANPAGE_URL, WORKSHOP_REGISTRATION_URL } from "@/lib/constants";
+import { FANPAGE_URL } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +16,18 @@ export function WorkshopSection() {
   const infoGridRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const [registration, setRegistration] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    activity: "",
+    attendees: "1",
+    note: "",
+    website: "",
+  });
+  const [registrationStatus, setRegistrationStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
   const ACTIVITIES = [
     {
@@ -167,6 +179,60 @@ export function WorkshopSection() {
     }, sectionRef);
     return () => ctx.revert();
   }, []);
+
+  const scrollToRegistration = () => {
+    document
+      .getElementById("workshop-registration")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleRegistrationChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    setRegistration((current) => ({ ...current, [event.target.name]: event.target.value }));
+  };
+
+  const handleRegistrationSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (registration.website) return;
+
+    const endpoint = process.env.NEXT_PUBLIC_WORKSHOP_SHEET_ENDPOINT;
+    if (!endpoint) {
+      setRegistrationStatus("error");
+      return;
+    }
+
+    setRegistrationStatus("sending");
+    try {
+      await fetch(endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          fullName: registration.name,
+          email: registration.email,
+          phone: registration.phone,
+          activity: registration.activity,
+          attendees: registration.attendees,
+          note: registration.note,
+          submittedAt: new Date().toISOString(),
+          source: "moc-xinh-website",
+        }),
+      });
+      setRegistrationStatus("success");
+      setRegistration({
+        name: "",
+        email: "",
+        phone: "",
+        activity: "",
+        attendees: "1",
+        note: "",
+        website: "",
+      });
+    } catch {
+      setRegistrationStatus("error");
+    }
+  };
 
   return (
     <section
@@ -382,10 +448,9 @@ export function WorkshopSection() {
             <p className="mt-3 text-sm leading-relaxed text-ivory/75">{t("workshop_cta_note")}</p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href={WORKSHOP_REGISTRATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={scrollToRegistration}
                 id="workshop-register-btn"
                 className="inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-moc-green px-8 py-4 text-sm font-semibold text-white shadow-lg transition-all duration-500 hover:-translate-y-0.5 hover:bg-moc-green-dark glow-green sm:w-auto"
               >
@@ -399,7 +464,7 @@ export function WorkshopSection() {
                 >
                   <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </a>
+              </button>
 
               <a
                 href={FANPAGE_URL}
@@ -412,6 +477,180 @@ export function WorkshopSection() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* ── Registration Form ─────────────────────────────────────────── */}
+        <div
+          id="workshop-registration"
+          className="mx-auto mt-10 max-w-3xl scroll-mt-24 rounded-3xl border border-kraft/15 bg-cream/95 p-7 shadow-card backdrop-blur-sm dark:border-kraft/8 dark:bg-[var(--surface)] md:p-10"
+        >
+          {registrationStatus === "success" ? (
+            <div className="flex flex-col items-center gap-4 py-10 text-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-moc-green/15 text-3xl">
+                ✅
+              </div>
+              <h3 className="font-display text-2xl text-kraft-dark dark:text-kraft-dark">
+                {lang === "vi" ? "Đăng ký đã được gửi" : "Your registration was sent"}
+              </h3>
+              <p className="max-w-md text-sm leading-relaxed text-olive-dark/75">
+                {lang === "vi"
+                  ? "Mộc Xinh sẽ liên hệ với bạn để xác nhận thông tin workshop."
+                  : "Mộc Xinh will contact you to confirm your workshop details."}
+              </p>
+              <button
+                type="button"
+                onClick={() => setRegistrationStatus("idle")}
+                className="rounded-full border border-olive/30 px-5 py-2.5 text-sm font-medium text-olive transition-colors hover:bg-olive/10"
+              >
+                {lang === "vi" ? "Gửi một đăng ký khác" : "Send another registration"}
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleRegistrationSubmit} className="space-y-5">
+              <div className="text-center">
+                <p className="text-xs font-medium uppercase tracking-[0.25em] text-moc-green-dark dark:text-moc-green-light">
+                  {lang === "vi" ? "Đăng ký trực tuyến" : "Online registration"}
+                </p>
+                <h3 className="mt-2 font-display text-3xl text-kraft-dark dark:text-kraft-dark">
+                  {lang === "vi" ? "Giữ một chỗ tại Workshop" : "Reserve your Workshop place"}
+                </h3>
+                <p className="mt-2 text-sm text-olive-dark/75">
+                  {lang === "vi"
+                    ? "Điền thông tin, Mộc Xinh sẽ xác nhận qua email hoặc điện thoại."
+                    : "Leave your details and Mộc Xinh will confirm by email or phone."}
+                </p>
+              </div>
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+                  {lang === "vi" ? "Họ và tên *" : "Full name *"}
+                  <input
+                    className="input-field normal-case tracking-normal"
+                    name="name"
+                    required
+                    value={registration.name}
+                    onChange={handleRegistrationChange}
+                    placeholder="Nguyễn Văn A"
+                  />
+                </label>
+                <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+                  Email *
+                  <input
+                    className="input-field normal-case tracking-normal"
+                    name="email"
+                    type="email"
+                    required
+                    value={registration.email}
+                    onChange={handleRegistrationChange}
+                    placeholder="email@example.com"
+                  />
+                </label>
+                <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+                  {lang === "vi" ? "Số điện thoại *" : "Phone number *"}
+                  <input
+                    className="input-field normal-case tracking-normal"
+                    name="phone"
+                    type="tel"
+                    required
+                    value={registration.phone}
+                    onChange={handleRegistrationChange}
+                    placeholder="090 123 4567"
+                  />
+                </label>
+                <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+                  {lang === "vi" ? "Số người tham dự *" : "Attendees *"}
+                  <select
+                    className="input-field normal-case tracking-normal"
+                    name="attendees"
+                    value={registration.attendees}
+                    onChange={handleRegistrationChange}
+                  >
+                    {[1, 2, 3, 4, 5].map((count) => (
+                      <option key={count} value={count}>
+                        {count}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
+              <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+                {lang === "vi" ? "Hoạt động bạn muốn chọn *" : "Preferred activity *"}
+                <select
+                  className="input-field normal-case tracking-normal"
+                  name="activity"
+                  required
+                  value={registration.activity}
+                  onChange={handleRegistrationChange}
+                >
+                  <option value="" disabled>
+                    {lang === "vi" ? "— Chọn một hoạt động —" : "— Select an activity —"}
+                  </option>
+                  {ACTIVITIES.map((activity) => (
+                    <option key={activity.num} value={activity.title}>
+                      {activity.num}. {activity.title}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+                {lang === "vi" ? "Ghi chú (không bắt buộc)" : "Note (optional)"}
+                <textarea
+                  className="input-field resize-none normal-case tracking-normal"
+                  name="note"
+                  rows={4}
+                  value={registration.note}
+                  onChange={handleRegistrationChange}
+                  placeholder={
+                    lang === "vi"
+                      ? "Ví dụ: yêu cầu hỗ trợ, dị ứng chất liệu..."
+                      : "For example: accessibility needs or material allergies..."
+                  }
+                />
+              </label>
+
+              <input
+                className="hidden"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={registration.website}
+                onChange={handleRegistrationChange}
+                aria-hidden="true"
+              />
+
+              {registrationStatus === "error" && (
+                <p
+                  role="alert"
+                  className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/30 dark:text-red-300"
+                >
+                  {lang === "vi"
+                    ? "Form chưa được kết nối với Google Sheet hoặc không thể gửi dữ liệu. Vui lòng liên hệ Mộc Xinh hoặc thử lại sau."
+                    : "The form is not connected to Google Sheets yet, or the request could not be sent. Please contact Mộc Xinh or try again later."}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={registrationStatus === "sending"}
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-olive px-8 py-3.5 text-sm font-semibold text-ivory transition-all duration-500 hover:bg-olive-dark hover:shadow-paper disabled:cursor-not-allowed disabled:opacity-60 glow-olive"
+              >
+                {registrationStatus === "sending"
+                  ? lang === "vi"
+                    ? "Đang gửi..."
+                    : "Sending..."
+                  : lang === "vi"
+                    ? "Gửi đăng ký"
+                    : "Submit registration"}
+              </button>
+              <p className="text-center text-xs leading-relaxed text-olive-dark/60">
+                {lang === "vi"
+                  ? "Thông tin chỉ được dùng để liên hệ và xác nhận Workshop."
+                  : "Your details are used only to contact you and confirm the Workshop."}
+              </p>
+            </form>
+          )}
         </div>
       </div>
     </section>
