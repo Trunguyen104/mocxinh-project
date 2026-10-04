@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Mascot } from "page-mascot";
 import { useApp } from "@/contexts/AppContext";
-import { WORKSHOP_REGISTRATION_URL } from "@/lib/constants";
 
 export function WorkshopMascotGuide() {
   const {
@@ -89,7 +88,10 @@ export function WorkshopMascotGuide() {
   };
 
   const handleRegisterNow = () => {
-    window.open(WORKSHOP_REGISTRATION_URL, "_blank", "noopener,noreferrer");
+    document
+      .getElementById("workshop-registration")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    closeTour();
   };
 
   // If tour is not active and user isn't in workshop, show nothing

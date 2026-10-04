@@ -93,7 +93,6 @@ export const PRODUCTS = [
   },
 ] as const;
 
-export const WORKSHOP_REGISTRATION_URL = "https://forms.gle/mocxinh-workshop-registration";
 export const FANPAGE_URL = "https://www.facebook.com/cogiaymocxinh";
 
 export const CONTACT = {
