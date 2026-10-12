@@ -3,6 +3,9 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { BRAND } from "@/lib/constants";
 import { AppProvider } from "@/contexts/AppContext";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 const inter = Inter({
   variable: "--font-inter",
@@ -46,6 +49,7 @@ export default function RootLayout({
     >
       <body className="min-h-full antialiased bg-[var(--background)] text-[var(--foreground)]">
         <AppProvider>{children}</AppProvider>
+        {gaId && <GoogleAnalytics gaId={gaId} />}
       </body>
     </html>
   );

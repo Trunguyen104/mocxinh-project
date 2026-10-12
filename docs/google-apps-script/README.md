@@ -11,3 +11,7 @@
 4. Khởi động lại Next.js. Lần gửi hợp lệ đầu tiên sẽ tạo sheet `Workshop registrations` cùng các cột dữ liệu.
 
 Không đưa service-account key hay thông tin đăng nhập Google vào frontend. Apps Script chạy dưới tài khoản Google đã triển khai là nơi duy nhất có quyền ghi vào Sheet.
+
+## Chống spam
+
+Mẫu `Code.gs` giới hạn một email gửi lại tối đa một lần trong 5 phút, dùng cache dùng chung của script; đồng thời khóa các request đồng thời, kiểm tra email, giới hạn độ dài dữ liệu và bỏ qua honeypot. Sau khi cập nhật mã Apps Script, hãy tạo **New version** và deploy lại Web App để thay đổi có hiệu lực.

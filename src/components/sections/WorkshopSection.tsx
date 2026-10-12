@@ -21,13 +21,18 @@ export function WorkshopSection() {
     email: "",
     phone: "",
     activity: "",
-    attendees: "1",
     note: "",
     website: "",
   });
-  const [registrationStatus, setRegistrationStatus] = useState<
-    "idle" | "sending" | "success" | "error"
+  const [registrationStatus, setRegistrationStatus] = useState<"idle" | "sending" | "error">(
+    "idle",
+  );
+  const [otp, setOtp] = useState("");
+  const [emailStatus, setEmailStatus] = useState<
+    "idle" | "sending" | "sent" | "verifying" | "verified"
   >("idle");
+  const [formError, setFormError] = useState("");
+  const [ticketPrice, setTicketPrice] = useState<number | null>(null);
 
   const ACTIVITIES = [
     {
@@ -180,6 +185,15 @@ export function WorkshopSection() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    fetch("/api/workshop/details")
+      .then((response) =>
+        response.ok ? response.json() : Promise.reject(new Error("Workshop unavailable")),
+      )
+      .then((workshop: { ticket_price: number }) => setTicketPrice(workshop.ticket_price))
+      .catch(() => setTicketPrice(null));
+  }, []);
+
   const scrollToRegistration = () => {
     document
       .getElementById("workshop-registration")
@@ -195,42 +209,77 @@ export function WorkshopSection() {
   const handleRegistrationSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (registration.website) return;
-
-    const endpoint = process.env.NEXT_PUBLIC_WORKSHOP_SHEET_ENDPOINT;
-    if (!endpoint) {
-      setRegistrationStatus("error");
+    if (emailStatus !== "verified") {
+      setFormError(
+        lang === "vi"
+          ? "Hãy xác minh email trước khi thanh toán."
+          : "Verify your email before payment.",
+      );
       return;
     }
-
+    setFormError("");
     setRegistrationStatus("sending");
     try {
-      await fetch(endpoint, {
+      const response = await fetch("/api/workshop/checkout", {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           fullName: registration.name,
           email: registration.email,
           phone: registration.phone,
           activity: registration.activity,
-          attendees: registration.attendees,
           note: registration.note,
-          submittedAt: new Date().toISOString(),
-          source: "moc-xinh-website",
+          website: registration.website,
         }),
       });
-      setRegistrationStatus("success");
-      setRegistration({
-        name: "",
-        email: "",
-        phone: "",
-        activity: "",
-        attendees: "1",
-        note: "",
-        website: "",
-      });
-    } catch {
+      const result = (await response.json()) as { checkoutUrl?: string; error?: string };
+      if (!response.ok || !result.checkoutUrl) throw new Error(result.error || "Checkout failed");
+      window.location.assign(result.checkoutUrl);
+    } catch (error) {
+      setFormError(
+        error instanceof Error && error.message
+          ? error.message
+          : lang === "vi"
+            ? "Không thể tạo thanh toán. Vui lòng thử lại."
+            : "Unable to start payment. Please try again.",
+      );
       setRegistrationStatus("error");
+    }
+  };
+
+  const requestOtp = async () => {
+    setFormError("");
+    setEmailStatus("sending");
+    try {
+      const response = await fetch("/api/auth/request-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: registration.email }),
+      });
+      const result = (await response.json()) as { error?: string };
+      if (!response.ok) throw new Error(result.error || "Unable to send OTP");
+      setEmailStatus("sent");
+    } catch (error) {
+      setEmailStatus("idle");
+      setFormError(error instanceof Error ? error.message : "Unable to send OTP");
+    }
+  };
+
+  const verifyOtp = async () => {
+    setFormError("");
+    setEmailStatus("verifying");
+    try {
+      const response = await fetch("/api/auth/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: registration.email, otp }),
+      });
+      const result = (await response.json()) as { error?: string };
+      if (!response.ok) throw new Error(result.error || "Unable to verify OTP");
+      setEmailStatus("verified");
+    } catch (error) {
+      setEmailStatus("sent");
+      setFormError(error instanceof Error ? error.message : "Unable to verify OTP");
     }
   };
 
@@ -484,173 +533,215 @@ export function WorkshopSection() {
           id="workshop-registration"
           className="mx-auto mt-10 max-w-3xl scroll-mt-24 rounded-3xl border border-kraft/15 bg-cream/95 p-7 shadow-card backdrop-blur-sm dark:border-kraft/8 dark:bg-[var(--surface)] md:p-10"
         >
-          {registrationStatus === "success" ? (
-            <div className="flex flex-col items-center gap-4 py-10 text-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-moc-green/15 text-3xl">
-                ✅
-              </div>
-              <h3 className="font-display text-2xl text-kraft-dark dark:text-kraft-dark">
-                {lang === "vi" ? "Đăng ký đã được gửi" : "Your registration was sent"}
-              </h3>
-              <p className="max-w-md text-sm leading-relaxed text-olive-dark/75">
-                {lang === "vi"
-                  ? "Mộc Xinh sẽ liên hệ với bạn để xác nhận thông tin workshop."
-                  : "Mộc Xinh will contact you to confirm your workshop details."}
+          <form onSubmit={handleRegistrationSubmit} className="space-y-5">
+            <div className="text-center">
+              <p className="text-xs font-medium uppercase tracking-[0.25em] text-moc-green-dark dark:text-moc-green-light">
+                {lang === "vi" ? "Đăng ký trực tuyến" : "Online registration"}
               </p>
-              <button
-                type="button"
-                onClick={() => setRegistrationStatus("idle")}
-                className="rounded-full border border-olive/30 px-5 py-2.5 text-sm font-medium text-olive transition-colors hover:bg-olive/10"
-              >
-                {lang === "vi" ? "Gửi một đăng ký khác" : "Send another registration"}
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleRegistrationSubmit} className="space-y-5">
-              <div className="text-center">
-                <p className="text-xs font-medium uppercase tracking-[0.25em] text-moc-green-dark dark:text-moc-green-light">
-                  {lang === "vi" ? "Đăng ký trực tuyến" : "Online registration"}
-                </p>
-                <h3 className="mt-2 font-display text-3xl text-kraft-dark dark:text-kraft-dark">
-                  {lang === "vi" ? "Giữ một chỗ tại Workshop" : "Reserve your Workshop place"}
-                </h3>
-                <p className="mt-2 text-sm text-olive-dark/75">
-                  {lang === "vi"
-                    ? "Điền thông tin, Mộc Xinh sẽ xác nhận qua email hoặc điện thoại."
-                    : "Leave your details and Mộc Xinh will confirm by email or phone."}
-                </p>
-              </div>
-
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
-                  {lang === "vi" ? "Họ và tên *" : "Full name *"}
-                  <input
-                    className="input-field normal-case tracking-normal"
-                    name="name"
-                    required
-                    value={registration.name}
-                    onChange={handleRegistrationChange}
-                    placeholder="Nguyễn Văn A"
-                  />
-                </label>
-                <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
-                  Email *
-                  <input
-                    className="input-field normal-case tracking-normal"
-                    name="email"
-                    type="email"
-                    required
-                    value={registration.email}
-                    onChange={handleRegistrationChange}
-                    placeholder="email@example.com"
-                  />
-                </label>
-                <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
-                  {lang === "vi" ? "Số điện thoại *" : "Phone number *"}
-                  <input
-                    className="input-field normal-case tracking-normal"
-                    name="phone"
-                    type="tel"
-                    required
-                    value={registration.phone}
-                    onChange={handleRegistrationChange}
-                    placeholder="090 123 4567"
-                  />
-                </label>
-                <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
-                  {lang === "vi" ? "Số người tham dự *" : "Attendees *"}
-                  <select
-                    className="input-field normal-case tracking-normal"
-                    name="attendees"
-                    value={registration.attendees}
-                    onChange={handleRegistrationChange}
-                  >
-                    {[1, 2, 3, 4, 5].map((count) => (
-                      <option key={count} value={count}>
-                        {count}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-
-              <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
-                {lang === "vi" ? "Hoạt động bạn muốn chọn *" : "Preferred activity *"}
-                <select
-                  className="input-field normal-case tracking-normal"
-                  name="activity"
-                  required
-                  value={registration.activity}
-                  onChange={handleRegistrationChange}
-                >
-                  <option value="" disabled>
-                    {lang === "vi" ? "— Chọn một hoạt động —" : "— Select an activity —"}
-                  </option>
-                  {ACTIVITIES.map((activity) => (
-                    <option key={activity.num} value={activity.title}>
-                      {activity.num}. {activity.title}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
-                {lang === "vi" ? "Ghi chú (không bắt buộc)" : "Note (optional)"}
-                <textarea
-                  className="input-field resize-none normal-case tracking-normal"
-                  name="note"
-                  rows={4}
-                  value={registration.note}
-                  onChange={handleRegistrationChange}
-                  placeholder={
-                    lang === "vi"
-                      ? "Ví dụ: yêu cầu hỗ trợ, dị ứng chất liệu..."
-                      : "For example: accessibility needs or material allergies..."
-                  }
-                />
-              </label>
-
-              <input
-                className="hidden"
-                name="website"
-                tabIndex={-1}
-                autoComplete="off"
-                value={registration.website}
-                onChange={handleRegistrationChange}
-                aria-hidden="true"
-              />
-
-              {registrationStatus === "error" && (
-                <p
-                  role="alert"
-                  className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/30 dark:text-red-300"
-                >
-                  {lang === "vi"
-                    ? "Form chưa được kết nối với Google Sheet hoặc không thể gửi dữ liệu. Vui lòng liên hệ Mộc Xinh hoặc thử lại sau."
-                    : "The form is not connected to Google Sheets yet, or the request could not be sent. Please contact Mộc Xinh or try again later."}
+              <h3 className="mt-2 font-display text-3xl text-kraft-dark dark:text-kraft-dark">
+                {lang === "vi" ? "Giữ một chỗ tại Workshop" : "Reserve your Workshop place"}
+              </h3>
+              <p className="mt-2 text-sm text-olive-dark/75">
+                {lang === "vi"
+                  ? "Xác minh email, hoàn tất thanh toán 100% và nhận xác nhận vé. Mỗi email chỉ đăng ký một ghế."
+                  : "Verify your email, pay in full, and receive a ticket confirmation. One seat per email."}
+              </p>
+              {ticketPrice !== null && (
+                <p className="mt-3 text-lg font-semibold text-kraft-dark">
+                  {lang === "vi" ? "Phí tham gia: " : "Ticket price: "}
+                  {new Intl.NumberFormat(lang === "vi" ? "vi-VN" : "en-US", {
+                    style: "currency",
+                    currency: "VND",
+                    maximumFractionDigits: 0,
+                  }).format(ticketPrice)}
                 </p>
               )}
+            </div>
 
-              <button
-                type="submit"
-                disabled={registrationStatus === "sending"}
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-olive px-8 py-3.5 text-sm font-semibold text-ivory transition-all duration-500 hover:bg-olive-dark hover:shadow-paper disabled:cursor-not-allowed disabled:opacity-60 glow-olive"
-              >
-                {registrationStatus === "sending"
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+                {lang === "vi" ? "Họ và tên *" : "Full name *"}
+                <input
+                  className="input-field normal-case tracking-normal"
+                  name="name"
+                  required
+                  value={registration.name}
+                  onChange={handleRegistrationChange}
+                  placeholder="Nguyễn Văn A"
+                />
+              </label>
+              <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+                Email *
+                <input
+                  className="input-field normal-case tracking-normal"
+                  name="email"
+                  type="email"
+                  required
+                  value={registration.email}
+                  onChange={handleRegistrationChange}
+                  disabled={emailStatus === "verified"}
+                  placeholder="email@example.com"
+                />
+              </label>
+              <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+                {lang === "vi" ? "Số điện thoại *" : "Phone number *"}
+                <input
+                  className="input-field normal-case tracking-normal"
+                  name="phone"
+                  type="tel"
+                  required
+                  value={registration.phone}
+                  onChange={handleRegistrationChange}
+                  placeholder="090 123 4567"
+                />
+              </label>
+              <div className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+                {lang === "vi" ? "Số ghế" : "Seats"}
+                <div className="input-field flex items-center normal-case tracking-normal">1</div>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-olive/20 bg-olive/5 p-4">
+              <p className="text-sm font-semibold text-olive-dark">
+                {emailStatus === "verified"
                   ? lang === "vi"
-                    ? "Đang gửi..."
-                    : "Sending..."
+                    ? "✓ Email đã được xác minh"
+                    : "✓ Email verified"
                   : lang === "vi"
-                    ? "Gửi đăng ký"
-                    : "Submit registration"}
-              </button>
-              <p className="text-center text-xs leading-relaxed text-olive-dark/60">
-                {lang === "vi"
-                  ? "Thông tin chỉ được dùng để liên hệ và xác nhận Workshop."
-                  : "Your details are used only to contact you and confirm the Workshop."}
+                    ? "Bước 1: Xác minh email"
+                    : "Step 1: Verify your email"}
               </p>
-            </form>
-          )}
+              {emailStatus !== "verified" && (
+                <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+                  <button
+                    type="button"
+                    onClick={requestOtp}
+                    disabled={
+                      emailStatus === "sending" ||
+                      emailStatus === "verifying" ||
+                      !registration.email
+                    }
+                    className="rounded-full border border-olive/40 px-4 py-2 text-sm font-medium text-olive disabled:opacity-50"
+                  >
+                    {emailStatus === "sending"
+                      ? lang === "vi"
+                        ? "Đang gửi mã..."
+                        : "Sending code..."
+                      : emailStatus === "sent"
+                        ? lang === "vi"
+                          ? "Gửi lại mã"
+                          : "Resend code"
+                        : lang === "vi"
+                          ? "Gửi mã OTP"
+                          : "Send OTP"}
+                  </button>
+                  {emailStatus === "sent" || emailStatus === "verifying" ? (
+                    <>
+                      <input
+                        className="input-field max-w-40 text-center"
+                        inputMode="numeric"
+                        maxLength={6}
+                        value={otp}
+                        onChange={(event) => setOtp(event.target.value.replace(/\D/g, ""))}
+                        placeholder="Mã 6 số"
+                      />
+                      <button
+                        type="button"
+                        onClick={verifyOtp}
+                        disabled={emailStatus === "verifying" || otp.length !== 6}
+                        className="rounded-full bg-olive px-4 py-2 text-sm font-medium text-ivory disabled:opacity-50"
+                      >
+                        {emailStatus === "verifying"
+                          ? "..."
+                          : lang === "vi"
+                            ? "Xác minh"
+                            : "Verify"}
+                      </button>
+                    </>
+                  ) : null}
+                </div>
+              )}
+            </div>
+
+            <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+              {lang === "vi" ? "Hoạt động bạn muốn chọn *" : "Preferred activity *"}
+              <select
+                className="input-field normal-case tracking-normal"
+                name="activity"
+                required
+                value={registration.activity}
+                onChange={handleRegistrationChange}
+              >
+                <option value="" disabled>
+                  {lang === "vi" ? "— Chọn một hoạt động —" : "— Select an activity —"}
+                </option>
+                {ACTIVITIES.map((activity) => (
+                  <option key={activity.num} value={activity.title}>
+                    {activity.num}. {activity.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="flex flex-col gap-1.5 text-xs font-medium uppercase tracking-wider text-olive">
+              {lang === "vi" ? "Ghi chú (không bắt buộc)" : "Note (optional)"}
+              <textarea
+                className="input-field resize-none normal-case tracking-normal"
+                name="note"
+                rows={4}
+                value={registration.note}
+                onChange={handleRegistrationChange}
+                placeholder={
+                  lang === "vi"
+                    ? "Ví dụ: yêu cầu hỗ trợ, dị ứng chất liệu..."
+                    : "For example: accessibility needs or material allergies..."
+                }
+              />
+            </label>
+
+            <input
+              className="hidden"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              value={registration.website}
+              onChange={handleRegistrationChange}
+              aria-hidden="true"
+            />
+
+            {(registrationStatus === "error" || formError) && (
+              <p
+                role="alert"
+                className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-950/30 dark:text-red-300"
+              >
+                {formError ||
+                  (lang === "vi"
+                    ? "Không thể bắt đầu thanh toán. Vui lòng thử lại sau."
+                    : "Unable to start payment. Please try again later.")}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={registrationStatus === "sending"}
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-olive px-8 py-3.5 text-sm font-semibold text-ivory transition-all duration-500 hover:bg-olive-dark hover:shadow-paper disabled:cursor-not-allowed disabled:opacity-60 glow-olive"
+            >
+              {registrationStatus === "sending"
+                ? lang === "vi"
+                  ? "Đang chuyển đến PayOS..."
+                  : "Sending..."
+                : lang === "vi"
+                  ? ticketPrice !== null
+                    ? `Thanh toán ${new Intl.NumberFormat("vi-VN").format(ticketPrice)}đ`
+                    : "Tiếp tục thanh toán"
+                  : "Continue to payment"}
+            </button>
+            <p className="text-center text-xs leading-relaxed text-olive-dark/60">
+              {lang === "vi"
+                ? "PayOS xử lý thanh toán. Vé chỉ được xác nhận sau khi hệ thống nhận webhook thanh toán hợp lệ."
+                : "PayOS processes payment. A ticket is confirmed only after a valid payment webhook is received."}
+            </p>
+          </form>
         </div>
       </div>
     </section>
