@@ -11,8 +11,14 @@ export const env = {
   payosClientId: () => required("PAYOS_CLIENT_ID"),
   payosApiKey: () => required("PAYOS_API_KEY"),
   payosChecksumKey: () => required("PAYOS_CHECKSUM_KEY"),
-  resendApiKey: () => required("RESEND_API_KEY"),
-  emailFrom: () => required("EMAIL_FROM"),
+  smtpUser: () => process.env.SMTP_USER || process.env.GMAIL_USER || "",
+  smtpPass: () => process.env.SMTP_PASS || process.env.GMAIL_PASS || "",
+  resendApiKey: () => process.env.RESEND_API_KEY || "",
+  emailFrom: () =>
+    process.env.EMAIL_FROM ||
+    process.env.SMTP_USER ||
+    process.env.GMAIL_USER ||
+    "Mộc Xinh <no-reply@mocxinh.vn>",
   otpHashSecret: () => required("OTP_HASH_SECRET"),
   sessionSecret: () => required("SESSION_SECRET"),
   workshopSlug: () => process.env.WORKSHOP_SLUG || "moc-xinh-fall-2026",
