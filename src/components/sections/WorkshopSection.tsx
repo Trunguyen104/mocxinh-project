@@ -38,7 +38,8 @@ export function WorkshopSection() {
     {
       num: "01",
       icon: "🎨",
-      title: lang === "vi" ? "Tô màu Tranh Đông Hồ A5" : "Dong Ho A5 Watercolor Painting",
+      price: 50000,
+      title: lang === "vi" ? "Tranh giấy A5 chủ đề Đông Hồ" : "Dong Ho Folk A5 Paper Painting",
       material:
         lang === "vi" ? "Giấy lá dứa / Giấy mía / Sậy" : "Pineapple Leaf / Bagasse / Reed Paper",
       desc:
@@ -48,8 +49,21 @@ export function WorkshopSection() {
     },
     {
       num: "02",
+      icon: "🖌️",
+      price: 50000,
+      title: lang === "vi" ? "Tranh giấy A5 vẽ tự do" : "Freehand A5 Paper Painting",
+      material:
+        lang === "vi" ? "Giấy lá dứa / Giấy mía / Sậy" : "Pineapple Leaf / Bagasse / Reed Paper",
+      desc:
+        lang === "vi"
+          ? "Thỏa sức phác thảo và sáng tạo tác phẩm hội họa tự do theo phong cách riêng trên nền giấy mộc."
+          : "Freely sketch and paint your own creative artwork on natural handmade botanical paper.",
+    },
+    {
+      num: "03",
       icon: "📔",
-      title: lang === "vi" ? "Trang trí Sổ tay dây thừng" : "Hemp-Bound Notebook Art",
+      price: 50000,
+      title: lang === "vi" ? "Sổ tay thủ công" : "Handcrafted Botanical Notebook",
       material:
         lang === "vi" ? "Giấy mía & Giấy sậy (8 × 11.5 cm)" : "Bagasse & Reed Paper (8 × 11.5 cm)",
       desc:
@@ -58,30 +72,26 @@ export function WorkshopSection() {
           : "Sketch and paint your own personalized cover on a rustic hemp-twine bound botanical notebook.",
     },
     {
-      num: "03",
+      num: "04",
       icon: "🏮",
-      title: lang === "vi" ? "Vẽ Đèn lồng giấy Dó LED" : "4-Sided Do Paper LED Lantern",
+      price: 100000,
+      note: lang === "vi" ? "Áp dụng cho 2 người" : "Valid for 2 people",
+      title:
+        lang === "vi"
+          ? "Đèn lồng giấy Dó (áp dụng cho 2 người)"
+          : "Do Paper Lantern (For 2 people)",
       material:
         lang === "vi" ? "Khung gỗ + 4 mặt giấy Dó A5" : "Wooden Frame + 4 A5 Do Paper Panels",
       desc:
         lang === "vi"
-          ? "Trang trí 4 mặt giấy Dó căng phẳng, chờ màu khô và bật đèn LED tích hợp để ngắm ánh sáng ấm áp."
-          : "Paint all 4 taut Do paper panels and switch on the built-in LED for a warm, artistic glow.",
-    },
-    {
-      num: "04",
-      icon: "🪭",
-      title: lang === "vi" ? "Họa tiết Quạt giấy Dó" : "Traditional Do Paper Folding Fan",
-      material: lang === "vi" ? "Khung nan tre/gỗ + Giấy Dó" : "Bamboo/Wood Ribs + Do Paper",
-      desc:
-        lang === "vi"
-          ? "Mở quạt dán sẵn giấy Dó dẻo dai, phác thảo họa tiết màu nước mà không lo lem nhòe hay rách giấy."
-          : "Unfold the smooth bamboo fan and paint botanical motifs on moisture-resistant Do paper.",
+          ? "Trang trí 4 mặt giấy Dó căng phẳng cùng bạn bè/người thương, bật đèn LED tích hợp ngắm ánh sáng ấm áp."
+          : "Paint 4 taut Do paper panels together, and switch on the built-in LED for a cozy warm glow.",
     },
     {
       num: "05",
       icon: "🔖",
-      title: lang === "vi" ? "Thiết kế Bookmark & Tua rua" : "Botanical Bookmark & Tassel",
+      price: 30000,
+      title: lang === "vi" ? "Bookmark" : "Botanical Bookmark",
       material:
         lang === "vi"
           ? "Giấy lá dứa / Mía / Sậy (5 × 15 cm)"
@@ -413,9 +423,18 @@ export function WorkshopSection() {
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-xl">{act.icon}</span>
-                      <span className="rounded-full bg-olive/10 px-2.5 py-0.5 text-[10px] font-medium text-olive-dark dark:text-olive">
-                        {act.material}
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="rounded-full bg-moc-green/12 px-2.5 py-0.5 text-[11px] font-semibold text-moc-green-dark dark:bg-moc-green/15 dark:text-moc-green-light">
+                          {new Intl.NumberFormat(lang === "vi" ? "vi-VN" : "en-US", {
+                            style: "currency",
+                            currency: "VND",
+                            maximumFractionDigits: 0,
+                          }).format(act.price)}
+                        </span>
+                        <span className="rounded-full bg-olive/10 px-2.5 py-0.5 text-[10px] font-medium text-olive-dark dark:text-olive">
+                          {act.material}
+                        </span>
+                      </div>
                     </div>
                     <h4 className="mt-2 font-display text-base text-kraft-dark dark:text-kraft-dark">
                       {act.num}. {act.title}
@@ -546,16 +565,27 @@ export function WorkshopSection() {
                   ? "Xác minh email, hoàn tất thanh toán 100% và nhận xác nhận vé. Mỗi email chỉ đăng ký một ghế."
                   : "Verify your email, pay in full, and receive a ticket confirmation. One seat per email."}
               </p>
-              {ticketPrice !== null && (
-                <p className="mt-3 text-lg font-semibold text-kraft-dark">
-                  {lang === "vi" ? "Phí tham gia: " : "Ticket price: "}
-                  {new Intl.NumberFormat(lang === "vi" ? "vi-VN" : "en-US", {
-                    style: "currency",
-                    currency: "VND",
-                    maximumFractionDigits: 0,
-                  }).format(ticketPrice)}
-                </p>
-              )}
+              {(() => {
+                const selectedActivity = ACTIVITIES.find((a) => a.title === registration.activity);
+                const displayPrice = selectedActivity ? selectedActivity.price : ticketPrice;
+                return (
+                  <p className="mt-3 text-lg font-semibold text-kraft-dark">
+                    {lang === "vi" ? "Phí tham gia: " : "Ticket price: "}
+                    {displayPrice !== null
+                      ? new Intl.NumberFormat(lang === "vi" ? "vi-VN" : "en-US", {
+                          style: "currency",
+                          currency: "VND",
+                          maximumFractionDigits: 0,
+                        }).format(displayPrice)
+                      : "30.000₫ – 100.000₫"}
+                    {selectedActivity?.note && (
+                      <span className="ml-2 text-xs font-normal text-olive">
+                        ({selectedActivity.note})
+                      </span>
+                    )}
+                  </p>
+                );
+              })()}
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
@@ -677,7 +707,13 @@ export function WorkshopSection() {
                 </option>
                 {ACTIVITIES.map((activity) => (
                   <option key={activity.num} value={activity.title}>
-                    {activity.num}. {activity.title}
+                    {activity.num}. {activity.title} —{" "}
+                    {new Intl.NumberFormat(lang === "vi" ? "vi-VN" : "en-US", {
+                      style: "currency",
+                      currency: "VND",
+                      maximumFractionDigits: 0,
+                    }).format(activity.price)}
+                    {activity.note ? ` (${activity.note})` : ""}
                   </option>
                 ))}
               </select>

@@ -122,6 +122,22 @@ begin
 end;
 $$;
 
+-- Calculates price dynamically based on chosen activity
+create or replace function public.get_activity_price(p_activity text)
+returns integer language plpgsql immutable as $$
+begin
+  if p_activity ilike '%Đèn lồng%' then
+    return 100000;
+  elsif p_activity ilike '%Bookmark%' then
+    return 30000;
+  elsif p_activity ilike '%Đông Hồ%' or p_activity ilike '%tự do%' or p_activity ilike '%Sổ tay%' then
+    return 50000;
+  else
+    return 50000;
+  end if;
+end;
+$$;
+
 -- Atomically frees old holds, prevents duplicate email registrations, and holds exactly one seat.
 create or replace function public.reserve_workshop_seat(
   p_slug text,
@@ -137,9 +153,12 @@ declare
   existing_registration public.workshop_registrations;
   held_seats integer;
   result public.workshop_registrations;
+  calculated_amount integer;
 begin
   select * into selected_workshop from public.workshops where slug = p_slug for update;
   if not found then raise exception 'WORKSHOP_NOT_FOUND'; end if;
+
+  calculated_amount := public.get_activity_price(p_activity);
 
   update public.workshop_registrations
   set status = 'EXPIRED'
@@ -165,14 +184,14 @@ begin
   if found then
     update public.workshop_registrations
     set full_name = p_full_name, phone = p_phone, activity = p_activity, note = nullif(p_note, ''),
-        amount = selected_workshop.ticket_price, status = 'PENDING_PAYMENT', payment_link_id = null,
+        amount = calculated_amount, status = 'PENDING_PAYMENT', payment_link_id = null,
         checkout_url = null, payment_expires_at = p_expires_at, paid_at = null, payos_reference = null
     where id = existing_registration.id returning * into result;
   else
     insert into public.workshop_registrations
       (workshop_id, verified_email, full_name, phone, activity, note, amount, payment_expires_at)
     values
-      (selected_workshop.id, lower(p_email), p_full_name, p_phone, p_activity, nullif(p_note, ''), selected_workshop.ticket_price, p_expires_at)
+      (selected_workshop.id, lower(p_email), p_full_name, p_phone, p_activity, nullif(p_note, ''), calculated_amount, p_expires_at)
     returning * into result;
   end if;
   return result;
